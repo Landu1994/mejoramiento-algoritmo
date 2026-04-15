@@ -14,7 +14,7 @@ const Postulado = require('./Postulado');
 async function crearConvocatoria() {
   try {
     const convocatoria = new Convocatoria({
-      nombre: 'Mejoramiento de Vivienda Antioquia 2026',
+      nombre: 'VIVA MI CASA Mejoradas para ellas',
       fechaInicio: new Date('2026-04-01'),
       fechaCierre: new Date('2026-05-31'),
       estado: 'ABIERTA',

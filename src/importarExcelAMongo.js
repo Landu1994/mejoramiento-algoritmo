@@ -140,7 +140,7 @@ async function main() {
       }
     } else {
       // Opción 3: Crear con nombre por defecto
-      const nombreConv = `Convocatoria ${new Date().toISOString().split('T')[0]}`;
+      const nombreConv = 'VIVA MI CASA Mejoradas para ellas';
       
       console.log(`\n📝 Creando convocatoria con nombre por defecto: ${nombreConv}`);
       
