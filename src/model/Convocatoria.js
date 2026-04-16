@@ -1,6 +1,6 @@
 /**
  * Modelo de Mongoose para Convocatorias del programa de mejoramiento de vivienda
- * Colección: convocatorias
+ * Colección: convocatorias-mejoramiento
  */
 
 const mongoose = require('mongoose');
@@ -51,7 +51,7 @@ const convocatoriaSchema = new mongoose.Schema({
   }
 }, {
   // Configuración del schema
-  collection: 'Convocatorias-mejoramiento',
+  collection: 'convocatorias-mejoramiento',
   timestamps: true, // Añade createdAt y updatedAt automáticamente
   versionKey: '__v'
 });
@@ -144,6 +144,6 @@ convocatoriaSchema.post('save', function(doc) {
 });
 
 // ========== CREAR Y EXPORTAR MODELO ==========
-const Convocatoria = mongoose.model('Convocatorias-mejoramiento', convocatoriaSchema);
+const Convocatoria = mongoose.models.ConvocatoriaMejoramiento || mongoose.model('ConvocatoriaMejoramiento', convocatoriaSchema);
 
 module.exports = Convocatoria;

@@ -1,6 +1,6 @@
 /**
  * Modelo de Mongoose para beneficiarios del programa de mejoramiento de vivienda
- * Colección: algoritmo-mejoramientos
+ * Colección: postulados-mejoramientos
  * 
  * Basado en el schema de Antioquia Municipios (37 campos)
  */
@@ -259,6 +259,44 @@ const beneficiarioSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+
+  // ========== CONVOCATORIA Y POSTULACIÓN ==========
+  convocatoria: {
+    _id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ConvocatoriaMejoramiento'
+    },
+    nombre: {
+      type: String,
+      trim: true,
+      index: true
+    },
+    fechaInicio: Date,
+    fechaCierre: Date,
+    estado: {
+      type: String,
+      trim: true
+    },
+    municipios: [{
+      type: String,
+      trim: true
+    }],
+    presupuestoTotal: {
+      type: Number,
+      min: 0
+    }
+  },
+
+  estadoPostulacion: {
+    type: String,
+    trim: true,
+    default: 'REGISTRADO'
+  },
+
+  fechaPostulacion: {
+    type: Date,
+    default: Date.now
+  },
   
   // ========== METADATOS DEL PROCESAMIENTO ==========
   metadata: {
@@ -285,7 +323,7 @@ const beneficiarioSchema = new mongoose.Schema({
   
 }, {
   // Configuración del schema
-  collection: 'algoritmo-mejoramientos',
+  collection: 'postulados-mejoramientos',
   timestamps: true, // Añade createdAt y updatedAt automáticamente
   versionKey: '__v'
 });
@@ -327,6 +365,28 @@ beneficiarioSchema.methods.getResumen = function() {
   };
 };
 
+beneficiarioSchema.methods.aprobar = function(usuario, observacion) {
+  this.estadoPostulacion = 'APROBADO';
+  this.metadata = {
+    ...this.metadata,
+    aprobadoPor: usuario,
+    observacionAprobacion: observacion,
+    fechaAprobacion: new Date()
+  };
+  return this.save();
+};
+
+beneficiarioSchema.methods.rechazar = function(motivo, usuario) {
+  this.estadoPostulacion = 'RECHAZADO';
+  this.metadata = {
+    ...this.metadata,
+    rechazadoPor: usuario,
+    motivoRechazo: motivo,
+    fechaRechazo: new Date()
+  };
+  return this.save();
+};
+
 // ========== MÉTODOS ESTÁTICOS ==========
 
 /**
@@ -343,6 +403,41 @@ beneficiarioSchema.statics.buscarPorMunicipio = function(municipio, opciones = {
   return this.find({ municipio })
     .sort(opciones.sort || { nombreCompleto: 1 })
     .limit(opciones.limit || 0);
+};
+
+beneficiarioSchema.statics.buscarPorConvocatoria = function(convocatoriaId, filtros = {}) {
+  const query = {
+    'convocatoria._id': convocatoriaId
+  };
+
+  if (filtros.estado) {
+    query.estadoPostulacion = filtros.estado;
+  }
+
+  return this.find(query).sort({ fechaPostulacion: -1, createdAt: -1 });
+};
+
+beneficiarioSchema.statics.contarPorEstado = function(convocatoriaId) {
+  const objectId = typeof convocatoriaId === 'string' && mongoose.Types.ObjectId.isValid(convocatoriaId)
+    ? new mongoose.Types.ObjectId(convocatoriaId)
+    : convocatoriaId;
+
+  return this.aggregate([
+    {
+      $match: {
+        'convocatoria._id': objectId
+      }
+    },
+    {
+      $group: {
+        _id: '$estadoPostulacion',
+        total: { $sum: 1 }
+      }
+    },
+    {
+      $sort: { total: -1 }
+    }
+  ]);
 };
 
 /**
@@ -452,6 +547,6 @@ beneficiarioSchema.post('save', function(doc) {
 });
 
 // ========== CREAR Y EXPORTAR MODELO ==========
-const Beneficiario = mongoose.model('Beneficiario', beneficiarioSchema);
+const Beneficiario = mongoose.models.PostuladoMejoramiento || mongoose.model('PostuladoMejoramiento', beneficiarioSchema);
 
 module.exports = Beneficiario;

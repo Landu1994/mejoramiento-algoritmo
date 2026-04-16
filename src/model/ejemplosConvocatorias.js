@@ -6,7 +6,7 @@
 
 const { connect, disconnect } = require('./connection');
 const Convocatoria = require('./Convocatoria');
-const Postulado = require('./Postulado');
+const Postulado = require('./BeneficiarioMejoramiento');
 
 /**
  * Ejemplo 1: Crear una convocatoria

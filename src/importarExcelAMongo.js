@@ -8,7 +8,7 @@ const Logger = require('./utils/logger');
 const schemaLoader = require('./schemas/schema-loader');
 const { connect, disconnect } = require('./model/connection');
 const Convocatoria = require('./model/Convocatoria');
-const Postulado = require('./model/Postulado');
+const Postulado = require('./model/BeneficiarioMejoramiento');
 const path = require('path');
 const fs = require('fs');
 
