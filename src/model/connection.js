@@ -1,11 +1,11 @@
 /**
  * Configuración de conexión a MongoDB
- * Base de datos por defecto: viva
+ * Base de datos por defecto: gogo-viva
  */
 
 const mongoose = require('mongoose');
 
-const DEFAULT_DB_NAME = 'viva';
+const DEFAULT_DB_NAME = process.env.MONGODB_DB_NAME || 'gogo-viva';
 
 function normalizeMongoUrl(url) {
   if (!url) {
@@ -27,11 +27,12 @@ function normalizeMongoUrl(url) {
   return trimmedUrl;
 }
 
-// URL de conexión, forzando la base viva si no viene definida
+// URL de conexión, forzando la base gogo-viva si no viene definida
 const MONGODB_URL = normalizeMongoUrl(process.env.MONGODB_URL);
 
 // Opciones de conexión
 const options = {
+  dbName: DEFAULT_DB_NAME,
   serverSelectionTimeoutMS: 5000,
   socketTimeoutMS: 45000,
 };
