@@ -1,18 +1,37 @@
 /**
  * Configuración de conexión a MongoDB
- * Base de datos: viva
- * Colección: algoritmo-mejoramientos
+ * Base de datos por defecto: viva
  */
 
 const mongoose = require('mongoose');
 
-// URL de conexión (ajusta según tu configuración)
-const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/viva';
+const DEFAULT_DB_NAME = 'viva';
+
+function normalizeMongoUrl(url) {
+  if (!url) {
+    return `mongodb://localhost:27017/${DEFAULT_DB_NAME}`;
+  }
+
+  const trimmedUrl = url.trim();
+
+  if (trimmedUrl.startsWith('mongodb+srv://')) {
+    const hasDbName = /mongodb\+srv:\/\/[^/]+\/[^?]+/.test(trimmedUrl);
+    return hasDbName ? trimmedUrl : trimmedUrl.replace(/\/?(\?.*)?$/, `/${DEFAULT_DB_NAME}$1`);
+  }
+
+  if (trimmedUrl.startsWith('mongodb://')) {
+    const hasDbName = /mongodb:\/\/[^/]+\/[^?]+/.test(trimmedUrl);
+    return hasDbName ? trimmedUrl : trimmedUrl.replace(/\/?(\?.*)?$/, `/${DEFAULT_DB_NAME}$1`);
+  }
+
+  return trimmedUrl;
+}
+
+// URL de conexión, forzando la base viva si no viene definida
+const MONGODB_URL = normalizeMongoUrl(process.env.MONGODB_URL);
 
 // Opciones de conexión
 const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   serverSelectionTimeoutMS: 5000,
   socketTimeoutMS: 45000,
 };
@@ -24,7 +43,7 @@ async function connect() {
   try {
     await mongoose.connect(MONGODB_URL, options);
     console.log('✅ Conectado a MongoDB');
-    console.log(`   Base de datos: viva`);
+    console.log(`   Base de datos: ${mongoose.connection.name}`);
     console.log(`   Host: ${mongoose.connection.host}`);
     console.log(`   Puerto: ${mongoose.connection.port}`);
   } catch (error) {

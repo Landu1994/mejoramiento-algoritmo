@@ -249,7 +249,8 @@ export MONGODB_URL="mongodb://usuario:password@localhost:27017/viva"
 O editar directamente en [connection.js](connection.js):
 
 ```javascript
-const MONGODB_URL = 'mongodb://localhost:27017/viva';
+const DEFAULT_DB_NAME = 'viva';
+const MONGODB_URL = process.env.MONGODB_URL || `mongodb://localhost:27017/${DEFAULT_DB_NAME}`;
 ```
 
 ## 🔐 Validaciones
