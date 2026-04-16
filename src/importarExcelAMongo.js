@@ -177,18 +177,27 @@ async function main() {
 
     for (const dato of resultado.documents) {
       try {
-        const postulado = new Postulado({
-          ...dato,
-          convocatoria: convocatoriaData,
-          estadoPostulacion: 'REGISTRADO',
-          fechaPostulacion: new Date(),
-          metadata: {
-            archivoOrigen: path.basename(filePath),
-            fechaImportacion: new Date()
+        await Postulado.updateOne(
+          { numeroDocumento: dato.numeroDocumento },
+          {
+            $set: {
+              ...dato,
+              convocatoria: convocatoriaData,
+              estadoPostulacion: 'REGISTRADO',
+              fechaPostulacion: new Date(),
+              metadata: {
+                archivoOrigen: path.basename(filePath),
+                fechaImportacion: new Date()
+              }
+            }
+          },
+          {
+            upsert: true,
+            runValidators: true,
+            setDefaultsOnInsert: true
           }
-        });
-        
-        await postulado.save();
+        );
+
         importados++;
         
         if (importados % 100 === 0) {

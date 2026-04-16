@@ -1,6 +1,6 @@
 /**
  * Modelo de Mongoose para beneficiarios del programa de mejoramiento de vivienda
- * Colección: postulados-mejoramientos
+ * Colección: postulados-mejoramiento
  * 
  * Basado en el schema de Antioquia Municipios (37 campos)
  */
@@ -323,7 +323,7 @@ const beneficiarioSchema = new mongoose.Schema({
   
 }, {
   // Configuración del schema
-  collection: 'postulados-mejoramientos',
+  collection: 'postulados-mejoramiento',
   timestamps: true, // Añade createdAt y updatedAt automáticamente
   versionKey: '__v'
 });
@@ -524,6 +524,35 @@ beneficiarioSchema.pre('save', function(next) {
  * Garantiza que todos los registros tengan edad correcta sin rechazarlos
  */
 beneficiarioSchema.pre('validate', function(next) {
+  if (this.email) {
+    this.email = this.email.toLowerCase();
+  }
+
+  if (this.genero) {
+    const valorGenero = String(this.genero).trim().toUpperCase();
+    const generoMap = {
+      'M': 'M',
+      'F': 'F',
+      'H': 'M',
+      'HOMBRE': 'M',
+      'MASCULINO': 'M',
+      'MUJER': 'F',
+      'FEMENINO': 'F',
+      'OTRO': 'Otro'
+    };
+    this.genero = generoMap[valorGenero] || this.genero;
+  }
+
+  if (this.zonaIntervencion) {
+    const valorZona = String(this.zonaIntervencion).trim().toUpperCase();
+    const zonaMap = {
+      'URBANA': 'Urbana',
+      'URBANO': 'Urbana',
+      'RURAL': 'Rural'
+    };
+    this.zonaIntervencion = zonaMap[valorZona] || this.zonaIntervencion;
+  }
+
   // Si hay fecha de nacimiento, calcular edad correcta
   if (this.fechaNacimiento) {
     const hoy = new Date();
