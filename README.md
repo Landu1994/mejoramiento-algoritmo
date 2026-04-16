@@ -538,3 +538,5 @@ Para problemas o preguntas:
 ## 📄 Licencia
 
 ISC
+
+ node .\src\importarExcelAMongo.js ".\data\matriz-corte-abril.xlsx" --schema=antioquia-municipios-v1 --nombre="VIVA MI CASA Mejoradas para ellas"
