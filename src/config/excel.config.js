@@ -1,9 +1,12 @@
 /**
  * Excel processing configuration (RF01, RF02).
  * Column order in the file may differ; mapping matches headers case-insensitively.
+ * Optional HEADER_ALIASES: { "typo normalizado": "Nombre exacto en EXPECTED_COLUMNS" }
+ * (keys are matched after trim + collapse spaces + lower case; see headerAliasResolver.js).
  */
 
 const excelConfig = {
+  HEADER_ALIASES: {},
   HEADER_ROW: 0,
   EXPECTED_COLUMNS: [
     'SUBREGIÓN',

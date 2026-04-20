@@ -3,6 +3,8 @@
  * Implementa RF04 - Validación de estructura por hoja
  */
 
+const { resolveCanonicalHeader } = require('../utils/headerAliasResolver');
+
 class SheetValidator {
   constructor(config, logger) {
     this.config = config;
@@ -90,14 +92,19 @@ class SheetValidator {
   validateByColumnNames(headers, sheetName) {
     const result = { valid: true, errors: [], warnings: [] };
     const expectedColumns = this.config.EXPECTED_COLUMNS || [];
+    const expectedLower = new Set(expectedColumns.map(c => c.toLowerCase()));
+
+    const resolvedCanonical = headers.map(h =>
+      resolveCanonicalHeader(h, this.config)
+    );
     const headerSet = new Set(
-      headers.map(h => h?.toString().toLowerCase().trim()).filter(Boolean)
+      resolvedCanonical
+        .map(c => c?.toString().toLowerCase().trim())
+        .filter(Boolean)
     );
 
     const requiredExcel = this.config.VALIDATIONS?.required || [];
-    const missingRequired = requiredExcel.filter(
-      col => !headerSet.has(col.toLowerCase())
-    );
+    const missingRequired = requiredExcel.filter(col => !headerSet.has(col.toLowerCase()));
 
     if (missingRequired.length > 0) {
       result.valid = false;
@@ -109,9 +116,7 @@ class SheetValidator {
       });
     }
 
-    const missingExpected = expectedColumns.filter(
-      col => !headerSet.has(col.toLowerCase())
-    );
+    const missingExpected = expectedColumns.filter(col => !headerSet.has(col.toLowerCase()));
 
     if (missingExpected.length > 0) {
       result.warnings.push({
@@ -122,16 +127,17 @@ class SheetValidator {
       });
     }
 
-    const extraColumns = headers.filter(header => {
-      const normalized = header?.toString().toLowerCase().trim();
-      if (!normalized) return false;
-      return !expectedColumns.some(col => col.toLowerCase() === normalized);
+    const extraColumns = headers.filter((header, idx) => {
+      const raw = header?.toString().trim();
+      if (!raw) return false;
+      const canon = resolvedCanonical[idx];
+      return !expectedLower.has(canon.toLowerCase());
     });
 
     if (extraColumns.length > 0) {
       result.warnings.push({
         type: 'EXTRA_COLUMNS',
-        message: `Columnas no listadas en EXPECTED_COLUMNS: ${extraColumns.join(', ')}`,
+        message: `Columnas no reconocidas (sin mapeo ni alias): ${extraColumns.join(', ')}`,
         sheetName,
         extraColumns
       });
@@ -178,10 +184,11 @@ class SheetValidator {
 
     if (this.config.COLUMN_MAPPING) {
       headers.forEach((header, index) => {
-        const normalizedHeader = header?.toString().trim();
+        const canonical = resolveCanonicalHeader(header, this.config);
+        if (!canonical) return;
 
-        const targetField = Object.keys(this.config.COLUMN_MAPPING).find(key =>
-          key.toLowerCase() === normalizedHeader.toLowerCase()
+        const targetField = Object.keys(this.config.COLUMN_MAPPING).find(
+          key => key.toLowerCase() === canonical.toLowerCase()
         );
 
         if (targetField) {
