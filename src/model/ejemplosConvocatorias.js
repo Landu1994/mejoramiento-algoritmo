@@ -47,17 +47,11 @@ async function asociarPostuladosAConvocatoria(convocatoriaId, datosPostulados) {
       throw new Error(`Convocatoria con ID ${convocatoriaId} no encontrada`);
     }
     
-    // Crear objeto embebido con datos de la convocatoria
     const convocatoriaData = {
       _id: convocatoria._id,
-      nombre: convocatoria.nombre,
-      fechaInicio: convocatoria.fechaInicio,
-      fechaCierre: convocatoria.fechaCierre,
-      estado: convocatoria.estado,
-      municipios: convocatoria.municipios || [],
-      presupuestoTotal: convocatoria.presupuestoTotal
+      nombre: convocatoria.nombre
     };
-    
+
     const resultados = [];
     
     for (const datos of datosPostulados) {
@@ -93,17 +87,11 @@ async function importarPostuladosDesdeExcel(archivoJSON, convocatoriaId) {
       throw new Error(`Convocatoria con ID ${convocatoriaId} no encontrada`);
     }
     
-    // Crear objeto embebido con datos de la convocatoria
     const convocatoriaData = {
       _id: convocatoria._id,
-      nombre: convocatoria.nombre,
-      fechaInicio: convocatoria.fechaInicio,
-      fechaCierre: convocatoria.fechaCierre,
-      estado: convocatoria.estado,
-      municipios: convocatoria.municipios || [],
-      presupuestoTotal: convocatoria.presupuestoTotal
+      nombre: convocatoria.nombre
     };
-    
+
     // Leer archivo JSON generado por el procesador de Excel
     const datos = JSON.parse(fs.readFileSync(archivoJSON, 'utf-8'));
     
@@ -117,7 +105,7 @@ async function importarPostuladosDesdeExcel(archivoJSON, convocatoriaId) {
       try {
         const postulado = new Postulado({
           ...dato,
-          convocatoria: convocatoriaData, // Objeto embebido completo
+          convocatoria: convocatoriaData,
           estadoPostulacion: 'REGISTRADO',
           fechaPostulacion: new Date(),
           metadata: {

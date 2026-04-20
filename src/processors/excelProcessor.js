@@ -10,12 +10,11 @@ const JsonTransformer = require('../transformers/jsonTransformer');
 const ProgressBar = require('../utils/progressBar');
 
 class ExcelProcessor {
-  constructor(config, logger, schema = null) {
+  constructor(config, logger) {
     this.config = config;
     this.logger = logger;
-    this.schema = schema; // Schema opcional para validación flexible
-    this.validator = new SheetValidator(config, logger, schema);
-    this.transformer = new JsonTransformer(config, logger, schema);
+    this.validator = new SheetValidator(config, logger);
+    this.transformer = new JsonTransformer(config, logger);
     this.progressBar = new ProgressBar();
     
     this.stats = {

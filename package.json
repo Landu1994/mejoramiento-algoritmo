@@ -8,10 +8,9 @@
     "start": "node src/index.js",
     "generate-test": "node examples/generateTestFile.js",
     "generate-flexible": "node examples/generateFlexibleOrder.js",
-    "list-schemas": "node src/index.js --list-schemas",
     "help": "node src/index.js --help",
     "db:import": "node src/model/importarDatos.js",
-    "db:ejemplos": "node src/model/ejemplos.js",
+    "db:ejemplos": "node src/model/ejemplosConvocatorias.js",
     "db:convocatorias": "node src/model/ejemplosConvocatorias.js",
     "import:excel": "node src/importarExcelAMongo.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -27,8 +26,6 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@types/node": "^25.6.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^6.0.2"
+    "@types/node": "^25.6.0"
   }
 }

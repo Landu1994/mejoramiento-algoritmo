@@ -7,19 +7,10 @@
 const DataSanitizers = require('../utils/dataSanitizers');
 
 class JsonTransformer {
-  constructor(config, logger, schema = null) {
+  constructor(config, logger) {
     this.config = config;
     this.logger = logger;
-    this.schema = schema;
     this.seenValues = new Map(); // Para validar unicidad
-    
-    // Crear mapa de tipos de campos desde el schema
-    this.fieldTypes = new Map();
-    if (schema && schema.columns) {
-      schema.columns.forEach(col => {
-        this.fieldTypes.set(col.jsonField, col.type || 'string');
-      });
-    }
   }
 
   /**
@@ -121,85 +112,50 @@ class JsonTransformer {
    * @returns {*} - Valor normalizado
    */
   normalizeValue(value, fieldName) {
-    // Obtener tipo de campo del schema
-    const fieldType = this.fieldTypes.get(fieldName);
-    
-    // Aplicar sanitización según el tipo de campo
-    if (fieldType) {
-      switch (fieldType) {
-        case 'email':
-          return DataSanitizers.cleanEmail(value);
-        case 'number':
-          return DataSanitizers.cleanNumber(value);
-        case 'phone':
-          return DataSanitizers.cleanPhone(value);
-        case 'date':
-          return DataSanitizers.cleanDate(value);
-        case 'boolean':
-          return DataSanitizers.cleanBoolean(value);
-        case 'string':
-        default:
-          return DataSanitizers.cleanString(value);
-      }
-    }
-    
-    // Fallback: lógica original si no hay schema
-    // Si el valor es null o undefined
     if (value === null || value === undefined || value === '') {
       return null;
     }
 
-    // Normalizar fechas
-    if (this.config.VALIDATIONS?.dateFields?.includes(fieldName)) {
-      return this.parseDate(value);
+    const validations = this.config.VALIDATIONS || {};
+
+    if (validations.emailFields) {
+      const match = validations.emailFields.find(f => this.getMappedFieldName(f) === fieldName);
+      if (match) {
+        return DataSanitizers.cleanEmail(value);
+      }
     }
 
-    // Normalizar números
+    if (validations.numericFields) {
+      const match = validations.numericFields.find(f => this.getMappedFieldName(f) === fieldName);
+      if (match) {
+        return DataSanitizers.cleanNumber(value);
+      }
+    }
+
+    if (fieldName === 'telefono') {
+      return DataSanitizers.cleanPhone(value);
+    }
+
+    if (validations.dateFields) {
+      const match = validations.dateFields.find(f => this.getMappedFieldName(f) === fieldName);
+      if (match) {
+        return DataSanitizers.cleanDate(value);
+      }
+    }
+
     if (typeof value === 'number') {
       return value;
     }
 
-    // Normalizar strings
     if (typeof value === 'string') {
       return value.trim();
     }
 
-    // Booleanos
     if (typeof value === 'boolean') {
       return value;
     }
 
     return value;
-  }
-
-  /**
-   * Parsear fecha desde Excel
-   * @param {*} value - Valor de fecha
-   * @returns {Date|null}
-   */
-  parseDate(value) {
-    try {
-      // Excel almacena fechas como números (días desde 1900-01-01)
-      if (typeof value === 'number') {
-        const date = new Date((value - 25569) * 86400 * 1000);
-        return isNaN(date.getTime()) ? null : date;
-      }
-
-      // Si es string, intentar parsear
-      if (typeof value === 'string') {
-        const date = new Date(value);
-        return isNaN(date.getTime()) ? null : date;
-      }
-
-      // Si ya es una fecha
-      if (value instanceof Date) {
-        return isNaN(value.getTime()) ? null : value;
-      }
-
-      return null;
-    } catch (error) {
-      return null;
-    }
   }
 
   /**

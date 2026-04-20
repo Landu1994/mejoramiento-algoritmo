@@ -2,7 +2,7 @@
  * Modelo de Mongoose para beneficiarios del programa de mejoramiento de vivienda
  * Colección: postulados-mejoramiento
  * 
- * Basado en el schema de Antioquia Municipios (37 campos)
+ * Campos alineados con src/config/excel.config.js (COLUMN_MAPPING)
  */
 
 const mongoose = require('mongoose');
@@ -270,20 +270,6 @@ const beneficiarioSchema = new mongoose.Schema({
       type: String,
       trim: true,
       index: true
-    },
-    fechaInicio: Date,
-    fechaCierre: Date,
-    estado: {
-      type: String,
-      trim: true
-    },
-    municipios: [{
-      type: String,
-      trim: true
-    }],
-    presupuestoTotal: {
-      type: Number,
-      min: 0
     }
   },
 

@@ -1,8 +1,6 @@
 /**
- * Ejemplo: Generador de archivos con columnas en DIFERENTE ORDEN
- * 
- * Este script demuestra que el sistema puede procesar archivos Excel
- * con las mismas columnas pero en diferente orden, gracias al sistema de schemas
+ * Example: build Excel files with the same logical columns in different column order.
+ * Headers must match names in src/config/excel.config.js (case-insensitive).
  */
 
 const XLSX = require('xlsx');
@@ -131,40 +129,11 @@ console.log('✅ Archivo 3 generado (Orden Aleatorio):');
 console.log('   Columnas: EDAD → NOMBRE COMPLETO → SUBREGIÓN → ...');
 console.log(`   Ruta: ${path3}\n`);
 
-// === ARCHIVO 4: Con Aliases (nombres alternativos) ===
-const orden4 = [
-  ['SUBREGION', 'MUNICIPIO', 'NOMBRES COMPLETOS', 'TIPO DOCUMENTO', 'CEDULA', 'EDAD', 'SEXO', 'EMAIL', 'TELEFONO']
-];
-
-datosEjemplo.forEach(d => {
-  orden4.push([
-    d.subregion,
-    d.municipio,
-    d.nombreCompleto,
-    d.tipoDocumento,
-    d.numeroDocumento,
-    d.edad,
-    d.genero,
-    d.email,
-    d.telefono
-  ]);
-});
-
-const wb4 = XLSX.utils.book_new();
-const ws4 = XLSX.utils.aoa_to_sheet(orden4);
-XLSX.utils.book_append_sheet(wb4, ws4, 'Datos');
-const path4 = path.join(__dirname, '..', 'data', 'ejemplo_aliases.xlsx');
-XLSX.writeFile(wb4, path4);
-console.log('✅ Archivo 4 generado (Con Aliases):');
-console.log('   Columnas: SUBREGION (sin tilde), EMAIL (alias), CEDULA (alias), etc.');
-console.log(`   Ruta: ${path4}\n`);
-
 console.log('=' .repeat(80));
 console.log('🎉 ¡Todos los archivos generados exitosamente!\n');
 console.log('💡 Para procesar cualquiera de estos archivos:');
 console.log('   node src/index.js data/ejemplo_orden_1.xlsx');
 console.log('   node src/index.js data/ejemplo_orden_2.xlsx');
-console.log('   node src/index.js data/ejemplo_orden_3.xlsx');
-console.log('   node src/index.js data/ejemplo_aliases.xlsx\n');
-console.log('✅ Todos deberían generar LA MISMA salida JSON gracias al sistema de schemas!');
+console.log('   node src/index.js data/ejemplo_orden_3.xlsx\n');
+console.log('✅ Los tres archivos deben producir el mismo JSON de salida (mismas filas, mismo mapeo).');
 console.log('=' .repeat(80) + '\n');
