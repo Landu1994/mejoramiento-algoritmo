@@ -1,0 +1,3142 @@
+{
+  "convocatoria": {
+    "_id": "69e06a1e0e9d2bb0d4adb251",
+    "nombre": "VIVA MI CASA Mejoradas para ellas"
+  },
+  "procesamiento": {
+    "archivoOrigen": "ple-mt-01-nuevocorte.xlsx",
+    "fechaProcesamiento": "2026-04-22T23:35:36.407Z",
+    "totalDocumentos": 28285,
+    "documentosImportados": 28061,
+    "documentosConError": 224,
+    "porcentajeExito": "99.21%"
+  },
+  "resumenInyeccion": {
+    "totalValidosParaInyeccion": 28285,
+    "yaExistianEnMongo": 27824,
+    "nuevosDetectados": 461,
+    "insertadosNuevos": 237,
+    "actualizadosExistentes": 27824,
+    "rechazadosTotal": 224,
+    "rechazadosExistentes": 0,
+    "rechazadosNuevos": 224
+  },
+  "municipios": [
+    {
+      "municipio": "ABEJORRAL",
+      "totalFilasHoja": 102,
+      "totalValidosHoja": 101,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 101,
+      "yaEnDB": 101,
+      "nuevosInsertados": 0,
+      "actualizados": 101,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 101,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "ALEJANDRIA",
+      "totalFilasHoja": 85,
+      "totalValidosHoja": 82,
+      "erroresValidacionPrevia": 3,
+      "totalValidosParaInyeccion": 82,
+      "yaEnDB": 82,
+      "nuevosInsertados": 0,
+      "actualizados": 82,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 82,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "AMAGA",
+      "totalFilasHoja": 82,
+      "totalValidosHoja": 81,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 81,
+      "yaEnDB": 81,
+      "nuevosInsertados": 0,
+      "actualizados": 81,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 81,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "AMALFI",
+      "totalFilasHoja": 384,
+      "totalValidosHoja": 210,
+      "erroresValidacionPrevia": 174,
+      "totalValidosParaInyeccion": 210,
+      "yaEnDB": 210,
+      "nuevosInsertados": 0,
+      "actualizados": 210,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 210,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "ANDES",
+      "totalFilasHoja": 147,
+      "totalValidosHoja": 146,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 146,
+      "yaEnDB": 146,
+      "nuevosInsertados": 0,
+      "actualizados": 146,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 146,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "ANGELOPOLIS",
+      "totalFilasHoja": 61,
+      "totalValidosHoja": 61,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 61,
+      "yaEnDB": 61,
+      "nuevosInsertados": 0,
+      "actualizados": 61,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 61,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "ANGOSTURA",
+      "totalFilasHoja": 403,
+      "totalValidosHoja": 398,
+      "erroresValidacionPrevia": 5,
+      "totalValidosParaInyeccion": 398,
+      "yaEnDB": 398,
+      "nuevosInsertados": 0,
+      "actualizados": 398,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 398,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "ANORI",
+      "totalFilasHoja": 169,
+      "totalValidosHoja": 157,
+      "erroresValidacionPrevia": 12,
+      "totalValidosParaInyeccion": 157,
+      "yaEnDB": 149,
+      "nuevosInsertados": 7,
+      "actualizados": 149,
+      "existentesConError": 0,
+      "nuevosConError": 1,
+      "erroresInyeccion": 1,
+      "exitososInyeccion": 156,
+      "porcentajeExitoInyeccion": "99.36%"
+    },
+    {
+      "municipio": "ANZA",
+      "totalFilasHoja": 478,
+      "totalValidosHoja": 465,
+      "erroresValidacionPrevia": 13,
+      "totalValidosParaInyeccion": 465,
+      "yaEnDB": 465,
+      "nuevosInsertados": 0,
+      "actualizados": 465,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 465,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "APARTADO",
+      "totalFilasHoja": 421,
+      "totalValidosHoja": 42,
+      "erroresValidacionPrevia": 379,
+      "totalValidosParaInyeccion": 42,
+      "yaEnDB": 42,
+      "nuevosInsertados": 0,
+      "actualizados": 42,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 42,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "ARBOLETES",
+      "totalFilasHoja": 170,
+      "totalValidosHoja": 160,
+      "erroresValidacionPrevia": 10,
+      "totalValidosParaInyeccion": 160,
+      "yaEnDB": 160,
+      "nuevosInsertados": 0,
+      "actualizados": 160,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 160,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "ARMENIA",
+      "totalFilasHoja": 170,
+      "totalValidosHoja": 150,
+      "erroresValidacionPrevia": 20,
+      "totalValidosParaInyeccion": 150,
+      "yaEnDB": 150,
+      "nuevosInsertados": 0,
+      "actualizados": 150,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 150,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "BARBOSA",
+      "totalFilasHoja": 325,
+      "totalValidosHoja": 295,
+      "erroresValidacionPrevia": 30,
+      "totalValidosParaInyeccion": 295,
+      "yaEnDB": 287,
+      "nuevosInsertados": 8,
+      "actualizados": 287,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 295,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "BELLO",
+      "totalFilasHoja": 103,
+      "totalValidosHoja": 70,
+      "erroresValidacionPrevia": 33,
+      "totalValidosParaInyeccion": 70,
+      "yaEnDB": 70,
+      "nuevosInsertados": 0,
+      "actualizados": 70,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 70,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "BELMIRA",
+      "totalFilasHoja": 281,
+      "totalValidosHoja": 276,
+      "erroresValidacionPrevia": 5,
+      "totalValidosParaInyeccion": 276,
+      "yaEnDB": 276,
+      "nuevosInsertados": 0,
+      "actualizados": 276,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 276,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "BETANIA",
+      "totalFilasHoja": 37,
+      "totalValidosHoja": 37,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 37,
+      "yaEnDB": 37,
+      "nuevosInsertados": 0,
+      "actualizados": 37,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 37,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "BETULIA",
+      "totalFilasHoja": 104,
+      "totalValidosHoja": 87,
+      "erroresValidacionPrevia": 17,
+      "totalValidosParaInyeccion": 87,
+      "yaEnDB": 87,
+      "nuevosInsertados": 0,
+      "actualizados": 87,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 87,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "BRICEÑO",
+      "totalFilasHoja": 193,
+      "totalValidosHoja": 189,
+      "erroresValidacionPrevia": 4,
+      "totalValidosParaInyeccion": 189,
+      "yaEnDB": 189,
+      "nuevosInsertados": 0,
+      "actualizados": 189,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 189,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "BURITICA",
+      "totalFilasHoja": 138,
+      "totalValidosHoja": 89,
+      "erroresValidacionPrevia": 49,
+      "totalValidosParaInyeccion": 89,
+      "yaEnDB": 89,
+      "nuevosInsertados": 0,
+      "actualizados": 89,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 89,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CACERES",
+      "totalFilasHoja": 230,
+      "totalValidosHoja": 229,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 229,
+      "yaEnDB": 229,
+      "nuevosInsertados": 0,
+      "actualizados": 229,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 229,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CAICEDO",
+      "totalFilasHoja": 196,
+      "totalValidosHoja": 184,
+      "erroresValidacionPrevia": 12,
+      "totalValidosParaInyeccion": 184,
+      "yaEnDB": 184,
+      "nuevosInsertados": 0,
+      "actualizados": 184,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 184,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CALDAS",
+      "totalFilasHoja": 191,
+      "totalValidosHoja": 189,
+      "erroresValidacionPrevia": 2,
+      "totalValidosParaInyeccion": 189,
+      "yaEnDB": 188,
+      "nuevosInsertados": 1,
+      "actualizados": 188,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 189,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CAÑASGORDAS",
+      "totalFilasHoja": 275,
+      "totalValidosHoja": 267,
+      "erroresValidacionPrevia": 8,
+      "totalValidosParaInyeccion": 267,
+      "yaEnDB": 267,
+      "nuevosInsertados": 0,
+      "actualizados": 267,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 267,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CARACOLI",
+      "totalFilasHoja": 85,
+      "totalValidosHoja": 81,
+      "erroresValidacionPrevia": 4,
+      "totalValidosParaInyeccion": 81,
+      "yaEnDB": 81,
+      "nuevosInsertados": 0,
+      "actualizados": 81,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 81,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CARAMANTA",
+      "totalFilasHoja": 100,
+      "totalValidosHoja": 87,
+      "erroresValidacionPrevia": 13,
+      "totalValidosParaInyeccion": 87,
+      "yaEnDB": 87,
+      "nuevosInsertados": 0,
+      "actualizados": 87,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 87,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CAREPA",
+      "totalFilasHoja": 1865,
+      "totalValidosHoja": 1479,
+      "erroresValidacionPrevia": 386,
+      "totalValidosParaInyeccion": 1479,
+      "yaEnDB": 1479,
+      "nuevosInsertados": 0,
+      "actualizados": 1479,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 1479,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CAROLINA DEL PRINCIPE",
+      "totalFilasHoja": 49,
+      "totalValidosHoja": 49,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 49,
+      "yaEnDB": 49,
+      "nuevosInsertados": 0,
+      "actualizados": 49,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 49,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CAUCASIA",
+      "totalFilasHoja": 1799,
+      "totalValidosHoja": 1505,
+      "erroresValidacionPrevia": 294,
+      "totalValidosParaInyeccion": 1505,
+      "yaEnDB": 1505,
+      "nuevosInsertados": 0,
+      "actualizados": 1505,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 1505,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CHIGORODO",
+      "totalFilasHoja": 772,
+      "totalValidosHoja": 732,
+      "erroresValidacionPrevia": 40,
+      "totalValidosParaInyeccion": 732,
+      "yaEnDB": 731,
+      "nuevosInsertados": 1,
+      "actualizados": 731,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 732,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CISNEROS",
+      "totalFilasHoja": 41,
+      "totalValidosHoja": 40,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 40,
+      "yaEnDB": 40,
+      "nuevosInsertados": 0,
+      "actualizados": 40,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 40,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CIUDAD BOLIVAR",
+      "totalFilasHoja": 58,
+      "totalValidosHoja": 58,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 58,
+      "yaEnDB": 58,
+      "nuevosInsertados": 0,
+      "actualizados": 58,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 58,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CONCEPCION",
+      "totalFilasHoja": 22,
+      "totalValidosHoja": 9,
+      "erroresValidacionPrevia": 13,
+      "totalValidosParaInyeccion": 9,
+      "yaEnDB": 9,
+      "nuevosInsertados": 0,
+      "actualizados": 9,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 9,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "CONCORDIA",
+      "totalFilasHoja": 158,
+      "totalValidosHoja": 76,
+      "erroresValidacionPrevia": 82,
+      "totalValidosParaInyeccion": 76,
+      "yaEnDB": 76,
+      "nuevosInsertados": 0,
+      "actualizados": 76,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 76,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "COPACABANA",
+      "totalFilasHoja": 138,
+      "totalValidosHoja": 136,
+      "erroresValidacionPrevia": 2,
+      "totalValidosParaInyeccion": 136,
+      "yaEnDB": 136,
+      "nuevosInsertados": 0,
+      "actualizados": 136,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 136,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "DABEIBA",
+      "totalFilasHoja": 601,
+      "totalValidosHoja": 573,
+      "erroresValidacionPrevia": 28,
+      "totalValidosParaInyeccion": 573,
+      "yaEnDB": 573,
+      "nuevosInsertados": 0,
+      "actualizados": 573,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 573,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "DON MATIAS",
+      "totalFilasHoja": 125,
+      "totalValidosHoja": 124,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 124,
+      "yaEnDB": 63,
+      "nuevosInsertados": 61,
+      "actualizados": 63,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 124,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "EBEJICO",
+      "totalFilasHoja": 0,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "EL BAGRE",
+      "totalFilasHoja": 552,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 552,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "EL CARMEN DEL VIBORAL",
+      "totalFilasHoja": 380,
+      "totalValidosHoja": 319,
+      "erroresValidacionPrevia": 61,
+      "totalValidosParaInyeccion": 319,
+      "yaEnDB": 319,
+      "nuevosInsertados": 0,
+      "actualizados": 319,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 319,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "EL PEÑOL",
+      "totalFilasHoja": 257,
+      "totalValidosHoja": 156,
+      "erroresValidacionPrevia": 101,
+      "totalValidosParaInyeccion": 156,
+      "yaEnDB": 156,
+      "nuevosInsertados": 0,
+      "actualizados": 156,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 156,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "EL RETIRO",
+      "totalFilasHoja": 11,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 11,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "EL SANTUARIO",
+      "totalFilasHoja": 244,
+      "totalValidosHoja": 231,
+      "erroresValidacionPrevia": 13,
+      "totalValidosParaInyeccion": 231,
+      "yaEnDB": 230,
+      "nuevosInsertados": 1,
+      "actualizados": 230,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 231,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "FREDONIA",
+      "totalFilasHoja": 399,
+      "totalValidosHoja": 290,
+      "erroresValidacionPrevia": 109,
+      "totalValidosParaInyeccion": 290,
+      "yaEnDB": 290,
+      "nuevosInsertados": 0,
+      "actualizados": 290,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 290,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "FRONTINO",
+      "totalFilasHoja": 155,
+      "totalValidosHoja": 138,
+      "erroresValidacionPrevia": 17,
+      "totalValidosParaInyeccion": 138,
+      "yaEnDB": 138,
+      "nuevosInsertados": 0,
+      "actualizados": 138,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 138,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "GIRALDO",
+      "totalFilasHoja": 207,
+      "totalValidosHoja": 205,
+      "erroresValidacionPrevia": 2,
+      "totalValidosParaInyeccion": 205,
+      "yaEnDB": 205,
+      "nuevosInsertados": 0,
+      "actualizados": 205,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 205,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "GIRARDOTA",
+      "totalFilasHoja": 217,
+      "totalValidosHoja": 208,
+      "erroresValidacionPrevia": 9,
+      "totalValidosParaInyeccion": 208,
+      "yaEnDB": 208,
+      "nuevosInsertados": 0,
+      "actualizados": 208,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 208,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "GRANADA",
+      "totalFilasHoja": 168,
+      "totalValidosHoja": 129,
+      "erroresValidacionPrevia": 39,
+      "totalValidosParaInyeccion": 129,
+      "yaEnDB": 129,
+      "nuevosInsertados": 0,
+      "actualizados": 129,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 129,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "GUADALUPE",
+      "totalFilasHoja": 73,
+      "totalValidosHoja": 68,
+      "erroresValidacionPrevia": 5,
+      "totalValidosParaInyeccion": 68,
+      "yaEnDB": 68,
+      "nuevosInsertados": 0,
+      "actualizados": 68,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 68,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "GUATAPE",
+      "totalFilasHoja": 18,
+      "totalValidosHoja": 6,
+      "erroresValidacionPrevia": 12,
+      "totalValidosParaInyeccion": 6,
+      "yaEnDB": 6,
+      "nuevosInsertados": 0,
+      "actualizados": 6,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 6,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "HELICONIA",
+      "totalFilasHoja": 107,
+      "totalValidosHoja": 3,
+      "erroresValidacionPrevia": 104,
+      "totalValidosParaInyeccion": 3,
+      "yaEnDB": 3,
+      "nuevosInsertados": 0,
+      "actualizados": 3,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 3,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "HISPANIA",
+      "totalFilasHoja": 93,
+      "totalValidosHoja": 38,
+      "erroresValidacionPrevia": 55,
+      "totalValidosParaInyeccion": 38,
+      "yaEnDB": 38,
+      "nuevosInsertados": 0,
+      "actualizados": 38,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 38,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "Hoja1",
+      "totalFilasHoja": 0,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "Hoja2",
+      "totalFilasHoja": 0,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "Hoja3",
+      "totalFilasHoja": 0,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "Instructivo ",
+      "totalFilasHoja": 0,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "ITUANGO",
+      "totalFilasHoja": 165,
+      "totalValidosHoja": 164,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 164,
+      "yaEnDB": 164,
+      "nuevosInsertados": 0,
+      "actualizados": 164,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 164,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "JARDIN",
+      "totalFilasHoja": 148,
+      "totalValidosHoja": 148,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 148,
+      "yaEnDB": 148,
+      "nuevosInsertados": 0,
+      "actualizados": 148,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 148,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "JERICO",
+      "totalFilasHoja": 49,
+      "totalValidosHoja": 48,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 48,
+      "yaEnDB": 48,
+      "nuevosInsertados": 0,
+      "actualizados": 48,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 48,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "LA CEJA",
+      "totalFilasHoja": 51,
+      "totalValidosHoja": 33,
+      "erroresValidacionPrevia": 18,
+      "totalValidosParaInyeccion": 33,
+      "yaEnDB": 33,
+      "nuevosInsertados": 0,
+      "actualizados": 33,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 33,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "LA ESTRELLA",
+      "totalFilasHoja": 18,
+      "totalValidosHoja": 1,
+      "erroresValidacionPrevia": 17,
+      "totalValidosParaInyeccion": 1,
+      "yaEnDB": 1,
+      "nuevosInsertados": 0,
+      "actualizados": 1,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 1,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "LA PINTADA",
+      "totalFilasHoja": 25,
+      "totalValidosHoja": 15,
+      "erroresValidacionPrevia": 10,
+      "totalValidosParaInyeccion": 15,
+      "yaEnDB": 15,
+      "nuevosInsertados": 0,
+      "actualizados": 15,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 15,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "LA UNION",
+      "totalFilasHoja": 143,
+      "totalValidosHoja": 141,
+      "erroresValidacionPrevia": 2,
+      "totalValidosParaInyeccion": 141,
+      "yaEnDB": 141,
+      "nuevosInsertados": 0,
+      "actualizados": 141,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 141,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "LIBORINA",
+      "totalFilasHoja": 178,
+      "totalValidosHoja": 176,
+      "erroresValidacionPrevia": 2,
+      "totalValidosParaInyeccion": 176,
+      "yaEnDB": 176,
+      "nuevosInsertados": 0,
+      "actualizados": 176,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 176,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "MACEO",
+      "totalFilasHoja": 341,
+      "totalValidosHoja": 326,
+      "erroresValidacionPrevia": 15,
+      "totalValidosParaInyeccion": 326,
+      "yaEnDB": 326,
+      "nuevosInsertados": 0,
+      "actualizados": 326,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 326,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "MARINILLA",
+      "totalFilasHoja": 237,
+      "totalValidosHoja": 237,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 237,
+      "yaEnDB": 237,
+      "nuevosInsertados": 0,
+      "actualizados": 237,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 237,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "MEDELLIN",
+      "totalFilasHoja": 111,
+      "totalValidosHoja": 104,
+      "erroresValidacionPrevia": 7,
+      "totalValidosParaInyeccion": 104,
+      "yaEnDB": 104,
+      "nuevosInsertados": 0,
+      "actualizados": 104,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 104,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "MONTEBELLO",
+      "totalFilasHoja": 90,
+      "totalValidosHoja": 90,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 90,
+      "yaEnDB": 90,
+      "nuevosInsertados": 0,
+      "actualizados": 90,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 90,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "MURINDO",
+      "totalFilasHoja": 206,
+      "totalValidosHoja": 204,
+      "erroresValidacionPrevia": 2,
+      "totalValidosParaInyeccion": 204,
+      "yaEnDB": 204,
+      "nuevosInsertados": 0,
+      "actualizados": 204,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 204,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "MUTATA",
+      "totalFilasHoja": 706,
+      "totalValidosHoja": 674,
+      "erroresValidacionPrevia": 32,
+      "totalValidosParaInyeccion": 674,
+      "yaEnDB": 673,
+      "nuevosInsertados": 1,
+      "actualizados": 673,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 674,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "NARIÑO",
+      "totalFilasHoja": 78,
+      "totalValidosHoja": 76,
+      "erroresValidacionPrevia": 2,
+      "totalValidosParaInyeccion": 76,
+      "yaEnDB": 76,
+      "nuevosInsertados": 0,
+      "actualizados": 76,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 76,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "NECHI",
+      "totalFilasHoja": 326,
+      "totalValidosHoja": 325,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 325,
+      "yaEnDB": 325,
+      "nuevosInsertados": 0,
+      "actualizados": 325,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 325,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "NECOCLI",
+      "totalFilasHoja": 1908,
+      "totalValidosHoja": 1741,
+      "erroresValidacionPrevia": 167,
+      "totalValidosParaInyeccion": 1741,
+      "yaEnDB": 1741,
+      "nuevosInsertados": 0,
+      "actualizados": 1741,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 1741,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "OLAYA",
+      "totalFilasHoja": 170,
+      "totalValidosHoja": 60,
+      "erroresValidacionPrevia": 110,
+      "totalValidosParaInyeccion": 60,
+      "yaEnDB": 0,
+      "nuevosInsertados": 60,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 60,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "PEQUE",
+      "totalFilasHoja": 283,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 283,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "PLANTILLA",
+      "totalFilasHoja": 0,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "PTO BERRIO",
+      "totalFilasHoja": 168,
+      "totalValidosHoja": 146,
+      "erroresValidacionPrevia": 22,
+      "totalValidosParaInyeccion": 146,
+      "yaEnDB": 146,
+      "nuevosInsertados": 0,
+      "actualizados": 146,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 146,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "PTO TRIUNFO",
+      "totalFilasHoja": 195,
+      "totalValidosHoja": 195,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 195,
+      "yaEnDB": 195,
+      "nuevosInsertados": 0,
+      "actualizados": 195,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 195,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "PUEBLORRICO",
+      "totalFilasHoja": 43,
+      "totalValidosHoja": 43,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 43,
+      "yaEnDB": 43,
+      "nuevosInsertados": 0,
+      "actualizados": 43,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 43,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "PUERTO NARE",
+      "totalFilasHoja": 52,
+      "totalValidosHoja": 52,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 52,
+      "yaEnDB": 51,
+      "nuevosInsertados": 1,
+      "actualizados": 51,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 52,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "REMEDIOS",
+      "totalFilasHoja": 527,
+      "totalValidosHoja": 402,
+      "erroresValidacionPrevia": 125,
+      "totalValidosParaInyeccion": 402,
+      "yaEnDB": 402,
+      "nuevosInsertados": 0,
+      "actualizados": 402,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 402,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SABANALARGA",
+      "totalFilasHoja": 345,
+      "totalValidosHoja": 344,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 344,
+      "yaEnDB": 277,
+      "nuevosInsertados": 0,
+      "actualizados": 277,
+      "existentesConError": 0,
+      "nuevosConError": 67,
+      "erroresInyeccion": 67,
+      "exitososInyeccion": 277,
+      "porcentajeExitoInyeccion": "80.52%"
+    },
+    {
+      "municipio": "SABANETA",
+      "totalFilasHoja": 24,
+      "totalValidosHoja": 17,
+      "erroresValidacionPrevia": 7,
+      "totalValidosParaInyeccion": 17,
+      "yaEnDB": 17,
+      "nuevosInsertados": 0,
+      "actualizados": 17,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 17,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SALGAR",
+      "totalFilasHoja": 179,
+      "totalValidosHoja": 179,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 179,
+      "yaEnDB": 179,
+      "nuevosInsertados": 0,
+      "actualizados": 179,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 179,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SAN ANDRES DE CUERQUIA",
+      "totalFilasHoja": 38,
+      "totalValidosHoja": 9,
+      "erroresValidacionPrevia": 29,
+      "totalValidosParaInyeccion": 9,
+      "yaEnDB": 4,
+      "nuevosInsertados": 5,
+      "actualizados": 4,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 9,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SAN CARLOS",
+      "totalFilasHoja": 103,
+      "totalValidosHoja": 103,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 103,
+      "yaEnDB": 103,
+      "nuevosInsertados": 0,
+      "actualizados": 103,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 103,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SAN FRANCISCO",
+      "totalFilasHoja": 106,
+      "totalValidosHoja": 65,
+      "erroresValidacionPrevia": 41,
+      "totalValidosParaInyeccion": 65,
+      "yaEnDB": 64,
+      "nuevosInsertados": 0,
+      "actualizados": 64,
+      "existentesConError": 0,
+      "nuevosConError": 1,
+      "erroresInyeccion": 1,
+      "exitososInyeccion": 64,
+      "porcentajeExitoInyeccion": "98.46%"
+    },
+    {
+      "municipio": "SAN JERONIMO",
+      "totalFilasHoja": 187,
+      "totalValidosHoja": 178,
+      "erroresValidacionPrevia": 9,
+      "totalValidosParaInyeccion": 178,
+      "yaEnDB": 178,
+      "nuevosInsertados": 0,
+      "actualizados": 178,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 178,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SAN JOSE DE LA MONTAÑA",
+      "totalFilasHoja": 34,
+      "totalValidosHoja": 25,
+      "erroresValidacionPrevia": 9,
+      "totalValidosParaInyeccion": 25,
+      "yaEnDB": 25,
+      "nuevosInsertados": 0,
+      "actualizados": 25,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 25,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SAN JUAN DE URABA",
+      "totalFilasHoja": 2768,
+      "totalValidosHoja": 2521,
+      "erroresValidacionPrevia": 247,
+      "totalValidosParaInyeccion": 2521,
+      "yaEnDB": 2516,
+      "nuevosInsertados": 5,
+      "actualizados": 2516,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 2521,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SAN PEDRO DE LOS MILAGROS",
+      "totalFilasHoja": 167,
+      "totalValidosHoja": 150,
+      "erroresValidacionPrevia": 17,
+      "totalValidosParaInyeccion": 150,
+      "yaEnDB": 150,
+      "nuevosInsertados": 0,
+      "actualizados": 150,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 150,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SAN PEDRO DE URABA",
+      "totalFilasHoja": 1247,
+      "totalValidosHoja": 1201,
+      "erroresValidacionPrevia": 46,
+      "totalValidosParaInyeccion": 1201,
+      "yaEnDB": 1184,
+      "nuevosInsertados": 17,
+      "actualizados": 1184,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 1201,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SAN RAFAEL",
+      "totalFilasHoja": 80,
+      "totalValidosHoja": 22,
+      "erroresValidacionPrevia": 58,
+      "totalValidosParaInyeccion": 22,
+      "yaEnDB": 22,
+      "nuevosInsertados": 0,
+      "actualizados": 22,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 22,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SAN VICENTE DE FERRER",
+      "totalFilasHoja": 651,
+      "totalValidosHoja": 651,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 651,
+      "yaEnDB": 651,
+      "nuevosInsertados": 0,
+      "actualizados": 651,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 651,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SANROQUE",
+      "totalFilasHoja": 421,
+      "totalValidosHoja": 421,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 421,
+      "yaEnDB": 421,
+      "nuevosInsertados": 0,
+      "actualizados": 421,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 421,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SANTA BARBARA",
+      "totalFilasHoja": 178,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 178,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "totalFilasHoja": 274,
+      "totalValidosHoja": 264,
+      "erroresValidacionPrevia": 10,
+      "totalValidosParaInyeccion": 264,
+      "yaEnDB": 169,
+      "nuevosInsertados": 8,
+      "actualizados": 169,
+      "existentesConError": 0,
+      "nuevosConError": 87,
+      "erroresInyeccion": 87,
+      "exitososInyeccion": 177,
+      "porcentajeExitoInyeccion": "67.05%"
+    },
+    {
+      "municipio": "SANTA ROSA DE OSOS",
+      "totalFilasHoja": 209,
+      "totalValidosHoja": 167,
+      "erroresValidacionPrevia": 42,
+      "totalValidosParaInyeccion": 167,
+      "yaEnDB": 141,
+      "nuevosInsertados": 26,
+      "actualizados": 141,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 167,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SANTO DOMINGO",
+      "totalFilasHoja": 51,
+      "totalValidosHoja": 51,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 51,
+      "yaEnDB": 51,
+      "nuevosInsertados": 0,
+      "actualizados": 51,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 51,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SEGOVIA",
+      "totalFilasHoja": 202,
+      "totalValidosHoja": 201,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 201,
+      "yaEnDB": 201,
+      "nuevosInsertados": 0,
+      "actualizados": 201,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 201,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "SOPETRAN",
+      "totalFilasHoja": 345,
+      "totalValidosHoja": 341,
+      "erroresValidacionPrevia": 4,
+      "totalValidosParaInyeccion": 341,
+      "yaEnDB": 341,
+      "nuevosInsertados": 0,
+      "actualizados": 341,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 341,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "TAMESIS",
+      "totalFilasHoja": 268,
+      "totalValidosHoja": 267,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 267,
+      "yaEnDB": 267,
+      "nuevosInsertados": 0,
+      "actualizados": 267,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 267,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "TARAZA",
+      "totalFilasHoja": 366,
+      "totalValidosHoja": 287,
+      "erroresValidacionPrevia": 79,
+      "totalValidosParaInyeccion": 287,
+      "yaEnDB": 287,
+      "nuevosInsertados": 0,
+      "actualizados": 287,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 287,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "TARSO",
+      "totalFilasHoja": 84,
+      "totalValidosHoja": 84,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 84,
+      "yaEnDB": 84,
+      "nuevosInsertados": 0,
+      "actualizados": 84,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 84,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "TITIRIBI",
+      "totalFilasHoja": 92,
+      "totalValidosHoja": 35,
+      "erroresValidacionPrevia": 57,
+      "totalValidosParaInyeccion": 35,
+      "yaEnDB": 35,
+      "nuevosInsertados": 0,
+      "actualizados": 35,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 35,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "TOLEDO",
+      "totalFilasHoja": 184,
+      "totalValidosHoja": 167,
+      "erroresValidacionPrevia": 17,
+      "totalValidosParaInyeccion": 167,
+      "yaEnDB": 99,
+      "nuevosInsertados": 0,
+      "actualizados": 99,
+      "existentesConError": 0,
+      "nuevosConError": 68,
+      "erroresInyeccion": 68,
+      "exitososInyeccion": 99,
+      "porcentajeExitoInyeccion": "59.28%"
+    },
+    {
+      "municipio": "TURBO",
+      "totalFilasHoja": 2115,
+      "totalValidosHoja": 2029,
+      "erroresValidacionPrevia": 86,
+      "totalValidosParaInyeccion": 2029,
+      "yaEnDB": 2017,
+      "nuevosInsertados": 12,
+      "actualizados": 2017,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 2029,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "URAMITA",
+      "totalFilasHoja": 393,
+      "totalValidosHoja": 382,
+      "erroresValidacionPrevia": 11,
+      "totalValidosParaInyeccion": 382,
+      "yaEnDB": 382,
+      "nuevosInsertados": 0,
+      "actualizados": 382,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 382,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "URRAO",
+      "totalFilasHoja": 113,
+      "totalValidosHoja": 110,
+      "erroresValidacionPrevia": 3,
+      "totalValidosParaInyeccion": 110,
+      "yaEnDB": 110,
+      "nuevosInsertados": 0,
+      "actualizados": 110,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 110,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "VALDIVIA",
+      "totalFilasHoja": 194,
+      "totalValidosHoja": 190,
+      "erroresValidacionPrevia": 4,
+      "totalValidosParaInyeccion": 190,
+      "yaEnDB": 190,
+      "nuevosInsertados": 0,
+      "actualizados": 190,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 190,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "VALPARAISO",
+      "totalFilasHoja": 23,
+      "totalValidosHoja": 23,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 23,
+      "yaEnDB": 0,
+      "nuevosInsertados": 23,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 23,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "VEGACHI",
+      "totalFilasHoja": 72,
+      "totalValidosHoja": 72,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 72,
+      "yaEnDB": 72,
+      "nuevosInsertados": 0,
+      "actualizados": 72,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 72,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "VENECIA",
+      "totalFilasHoja": 165,
+      "totalValidosHoja": 165,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 165,
+      "yaEnDB": 165,
+      "nuevosInsertados": 0,
+      "actualizados": 165,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 165,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "VIGIA DEL FUERTE",
+      "totalFilasHoja": 267,
+      "totalValidosHoja": 266,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 266,
+      "yaEnDB": 266,
+      "nuevosInsertados": 0,
+      "actualizados": 266,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 266,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "YALI",
+      "totalFilasHoja": 342,
+      "totalValidosHoja": 341,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 341,
+      "yaEnDB": 341,
+      "nuevosInsertados": 0,
+      "actualizados": 341,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 341,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "YARUMAL",
+      "totalFilasHoja": 66,
+      "totalValidosHoja": 0,
+      "erroresValidacionPrevia": 66,
+      "totalValidosParaInyeccion": 0,
+      "yaEnDB": 0,
+      "nuevosInsertados": 0,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 0,
+      "porcentajeExitoInyeccion": "0.00%"
+    },
+    {
+      "municipio": "YOLOMBO",
+      "totalFilasHoja": 186,
+      "totalValidosHoja": 186,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 186,
+      "yaEnDB": 186,
+      "nuevosInsertados": 0,
+      "actualizados": 186,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 186,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "YONDO",
+      "totalFilasHoja": 304,
+      "totalValidosHoja": 303,
+      "erroresValidacionPrevia": 1,
+      "totalValidosParaInyeccion": 303,
+      "yaEnDB": 303,
+      "nuevosInsertados": 0,
+      "actualizados": 303,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 303,
+      "porcentajeExitoInyeccion": "100.00%"
+    },
+    {
+      "municipio": "ZARAGOZA",
+      "totalFilasHoja": 362,
+      "totalValidosHoja": 362,
+      "erroresValidacionPrevia": 0,
+      "totalValidosParaInyeccion": 362,
+      "yaEnDB": 362,
+      "nuevosInsertados": 0,
+      "actualizados": 362,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 362,
+      "porcentajeExitoInyeccion": "100.00%"
+    }
+  ],
+  "errores": [
+    {
+      "municipio": "ANORI",
+      "documento": 1035128921,
+      "nombre": "MATTIAS SANCHEZARANGO",
+      "error": "Cast to Number failed for value \"118,1\" (type string) at path \"numeroFila\""
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39389668,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 32411380,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39381308,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 22040741,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 22040544,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 43830787,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39385509,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39381504,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1007102397,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 43571569,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 22040570,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39385250,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 22040535,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39388513,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 32542126,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1042061905,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39380401,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39380051,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39381753,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39381135,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 43582736,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 43080688,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 21421673,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 22041321,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 43288699,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39383779,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 42925114,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1000112312,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1042064461,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39385616,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39386059,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39380227,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 22040109,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39383206,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1042063262,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39388787,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39380246,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 22045403,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39388641,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39381337,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1001456347,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 42966543,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39385666,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39384254,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39380294,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39382258,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39382219,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39380882,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 42984582,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39386027,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39382752,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1042062856,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39381258,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39380273,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39389415,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1042060466,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39381677,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39382082,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 43061133,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1042063110,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1117508858,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39389492,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 21580416,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 22040743,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 1042063075,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39380347,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SABANALARGA",
+      "documento": 39386769,
+      "nombre": null,
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32104576,
+      "nombre": "BEATRIZ ELENA TUBERQUIA CARVAJAL",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32104138,
+      "nombre": "PATRICIA ELENA GONZALEZ CARVAJAL",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022092167,
+      "nombre": "LUZ  ALBENIS LOPEZ LOPEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022092388,
+      "nombre": "MARIA ISABEL MORALES  PANESSO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32102374,
+      "nombre": "LUZ  ELENA AGUDELO SALAZAR",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022099764,
+      "nombre": "MARIA ALEJANDRA GARCES URREGO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 39215489,
+      "nombre": "YUDY  IRLEY JIMENEZ GUTIERREZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022095184,
+      "nombre": "ERICCA BIBIANA RESTREPO MONTOYA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1147934617,
+      "nombre": "YURY FRANCELLY GALLO VAEGAS",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1018376336,
+      "nombre": "LEIDY VANESA IBARRA IBARRA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21506253,
+      "nombre": "ILDALY DEL CARMEN CARTAGENA ZAPATA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21504803,
+      "nombre": "SONIA  RAMIREZ DE GARCES",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 43865196,
+      "nombre": "LUZ  EDITH CARTAGENA VAEGAS",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1011590555,
+      "nombre": "ANA  ELSY PANESSO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32104538,
+      "nombre": "LUCELLY  SEPULVEDA SEPULVEDA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21501227,
+      "nombre": "ANA  LUDIVIA BENITEZ CARTAGENA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32144771,
+      "nombre": "OMAIRA  VARGAS HERNADEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21500842,
+      "nombre": "ADRIANA  PATRICIA ISAZA BENITEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1011590592,
+      "nombre": "SORANYS ALEJANDRA  CARVAJAL GUZMAN",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32104606,
+      "nombre": "ADRIANA  PATRICIA DURANGO CARTAGENA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1078636060,
+      "nombre": "ASMENDY JULIETH TABORDA TABORDA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21500913,
+      "nombre": "GLORIA INES GUERRA SOTO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21499108,
+      "nombre": "CONSUELO DE JESUS LOPEZ ATEHORTUA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32103004,
+      "nombre": "ROSA MARIA  URREGO CARVAJAL",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1000105176,
+      "nombre": "ALICIA PATRICIA LOPEZ ALCARAZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022093438,
+      "nombre": "DINA MARIA  VARGAS LOPEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32102249,
+      "nombre": "MARIA CONCEPCION LOPEZ CARVAJAL",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32100440,
+      "nombre": "ANA  TILDE SANTANA DE GARCIA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32100127,
+      "nombre": "LUZ  MIRIAM CEBALLOS CUREQUIA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32104941,
+      "nombre": "GLORIA EMILSE FLOREZ CEBALLOS",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32103199,
+      "nombre": "OMAIRA CUREQUIA CASTRO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022098003,
+      "nombre": "JENNIFER ALEJANDRA GONZALEZ ARGAEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32102412,
+      "nombre": "GLORIA AMPARO RODRIGUEZ MORALES",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022096863,
+      "nombre": "SINDY  CATHERINE HOLGUIN AGUDELO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1193139782,
+      "nombre": "YULIANA CRISTINA HIGUITA GARCIA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1035870710,
+      "nombre": "YESSICA  PAOLA HERNANDEZ JIMENEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32180373,
+      "nombre": "FLOR ELENA DEL SOCORRO CARTAGENA MONTOYA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32101514,
+      "nombre": "ROSA ANGELICA ALCARAZ GARCIA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1015277420,
+      "nombre": "PAULA ANDREA DURANGO DURANGO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32102950,
+      "nombre": "MARIA MATILDE LEZCANO GODOY",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21501008,
+      "nombre": "IDALY DEL CONSUELO HERNANDEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21501076,
+      "nombre": "NIDIA YANET VIDALES HERNANDEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21502751,
+      "nombre": "MARARIA ALICIA HERNANDEZ HOLGUIN",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1033651867,
+      "nombre": "YULEIDA  BRAN  GALLO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32100987,
+      "nombre": "LUZ  MARINA AGUDELO VARELA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21500344,
+      "nombre": "BLANCA LILIA CARVAJAL MARTINEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022092165,
+      "nombre": "GLADIS AMPARO LOPEZ GODOY",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32102804,
+      "nombre": "MARIA DUBERLINA ARANGO GODOY",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022093902,
+      "nombre": "LUZ  ENITH RIVERA CARTAGENA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32104805,
+      "nombre": "ROCIO DEL SOCORRO GALLO  BENITEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21501150,
+      "nombre": "SANDRA MILENA PIEDRAHITA ALCARAZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32102156,
+      "nombre": "MARIA HUBIELA RODRIGUEZ HERNANDEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022094986,
+      "nombre": "TATIANA ANDREA GRACIANO RODRIGUEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022099853,
+      "nombre": "DAYANA KHATERIN GONZALEZ ALCARAZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21503014,
+      "nombre": "MARIA ANGELICA GALLO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1000106144,
+      "nombre": "ROSA CRISTINA CARTAGENA QUIROS",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21501202,
+      "nombre": "MARIA DEL CARMEN SERNA GARCIA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32101738,
+      "nombre": "NAZARETH DEL SOCORRO GONZALEZ HIGUITA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21506218,
+      "nombre": "BELLANIRA  GUZMAN DE CARVAJAL",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1011593874,
+      "nombre": "MARIA ESTER LOPEZ GONZALEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32101950,
+      "nombre": "LUZ  ALBA GONZALEZ HIGUITA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21500933,
+      "nombre": "LUZ  AIDE HOLGUIN LEAL",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21506310,
+      "nombre": "ROSA ELENA GUZMAN USUGA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32101787,
+      "nombre": "FLOR MARIA DE JESUS PEREZ ALCARAZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1193095105,
+      "nombre": "FLOR MARIA CUADROS",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 30078721,
+      "nombre": "MARIA OFELIA CUADROS LEZCANO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022097974,
+      "nombre": "OLIBIA DEL SOCORRO ORTIZ CUADROS",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 43480775,
+      "nombre": "MARTA CECILIA SAIGAMA VELEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022096651,
+      "nombre": "MILVIA NELLY ORTIZ CUADROS",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21500266,
+      "nombre": "MARIA IRENE URIBE URREGO",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022094138,
+      "nombre": "NORBELLY  AMPARO CASTRILLON FLOREZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022095267,
+      "nombre": "LUCIDIA MARYORI VIDALES HERNANDEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 22117975,
+      "nombre": "ESNEDY SENIDIA VIDALES HERNANDEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32102488,
+      "nombre": "ALBA MERY MORALES  HOLGUIN",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1011590810,
+      "nombre": "MARTA CECILIA RINCON",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32101896,
+      "nombre": "BERTALINA  RIVERA BRAND",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32101672,
+      "nombre": "FANNY DE JESUS RIVERA BENITEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21502819,
+      "nombre": "MARIA MAGDALENA GALIANO CARVAJAL",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 43158145,
+      "nombre": "ADELAIDA PATRICIA ALCARAZ CARTAGENA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32101332,
+      "nombre": "MARIA IGNACIA BRAN  FLOREZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022096515,
+      "nombre": "AIDE MILENA YEPEZ USUGA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022095177,
+      "nombre": "MONICA YOANA CARVAJAL GUERRA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21499892,
+      "nombre": "ELOISA  RIVERA DE SILVA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32102541,
+      "nombre": "GABRIELA DE JESUS VARGAS  RUEDA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 32101302,
+      "nombre": "MARIA ORFELINA ARIAS  GONZALEZ",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 1022096886,
+      "nombre": "MARIA ALEJANDRA HOLGUIN MORALES",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "SANTA FE DE ANTIOQUIA",
+      "documento": 21501186,
+      "nombre": "NIDIA  GARCIA",
+      "error": "Cast to Number failed for value \"FAVORABLE\" (type string) at path \"presupuesto\""
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 22147920,
+      "nombre": "MARIA JAEL JARAMILLO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 43851777,
+      "nombre": "MARTA NOELIA ACEVEDO JARAMILLO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1040978532,
+      "nombre": "ANGELY ANDREA CALLEJAS ACEVEDO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1023622641,
+      "nombre": "CRISTIAN CAMILO GOMEZ GARCIA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1015072940,
+      "nombre": "MELANI ESCOBAR GARCIA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1025772244,
+      "nombre": "ELIANI VAZQUEZ GARCIA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1031947176,
+      "nombre": "MAXIMILIANO VAZQUEZ GARCIA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122705,
+      "nombre": "ELIANA GOMEZ MONSALVE",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1001988080,
+      "nombre": "JHON FERNANDO ZAPATA MONSALVE",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1023538338,
+      "nombre": "YEFERSON JULIAN JIMENEZ CALLEJAS",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1035772110,
+      "nombre": "DILAN MATIAS CALLEJAS HERNANDEZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1041630521,
+      "nombre": "CARLOS HUMBERTO CARVAJAL MONSALVE",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044120035,
+      "nombre": "LEIDY DIANA CALLEJAS CALLEJAS",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121695,
+      "nombre": "JAVIER HERNANDO PEREZ MONSALVE",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121310,
+      "nombre": "MAXIMILIANO PEREZ MONSALVE",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121510,
+      "nombre": "MARYLIN PEREZ MONSALVE",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044510564,
+      "nombre": "HANNA AVILE PEREZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1001987913,
+      "nombre": "ARIEL JHOANI PEREZ MONSALVE",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122395,
+      "nombre": "MAILY CESPEDES HOLGUIN",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044120783,
+      "nombre": "YELEYDI GOMEZ HOLGUIN",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1041635368,
+      "nombre": "JHON ESTIVEN CAÑAS ESPINOSA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1023803350,
+      "nombre": "CRISTIAN EMILIANO HOLGUIN  ESPINOZA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121074,
+      "nombre": "ANA MARIA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121612,
+      "nombre": "NAYELI  VALENCIA CALLEJAS",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1042153622,
+      "nombre": "JEFFERSON GOMEZ SUAREZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1001988284,
+      "nombre": "NELSON ARIEL MONSALVE MUÑOZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1037448895,
+      "nombre": "LAURA MARCELA MONSALVE VERA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1037310415,
+      "nombre": "YEFERSON ALEXANDER MONSALVE VERA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1001987894,
+      "nombre": "JOSE ARMANDO CORREA VALBUENA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1023525462,
+      "nombre": "BRAYAN CORREA VALBUENA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1001988326,
+      "nombre": "DUVAN ALFONSO CORREA VALBUENA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1001988173,
+      "nombre": "LUZ MARCELA CORREA VALBUENA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1032012656,
+      "nombre": "ADRIAN MUÑOZ CARVAJAL",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121099,
+      "nombre": "JUAN JOSE CARVAJAL ARANGO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121509,
+      "nombre": "MAIKOL ANDRES CARVAJAL ARANGO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122244,
+      "nombre": "VALENTINA CARVAJAL ARANGO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1022122349,
+      "nombre": "SALOME GARCIA CARVAJAL",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122625,
+      "nombre": "SAMANTA CARDENAS CARVAJAL",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044120147,
+      "nombre": "MARINELA GONZALEZ PINO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1001988279,
+      "nombre": "MANUELA GONZALEZ PINO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1025906128,
+      "nombre": "CHRISTOPHER MUÑOZ ARBOLEDA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122592,
+      "nombre": "ABIGAIL MUÑOZ ARBOLEDA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1001509850,
+      "nombre": "YURY ALEXANDRA PEREZ MONSALVE",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1037776025,
+      "nombre": "ESTEFANIA PEREZ MONSALVE",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121667,
+      "nombre": "ANA SOFIA SERNA JARAMILLO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044120944,
+      "nombre": "EDUAR ESTEBAN JARAMILLO CHAVARRIA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121295,
+      "nombre": "ALEJANDRA JARAMILLO CHAVARRIA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1001987780,
+      "nombre": "JUAN ALBERTO GUZMAN CHANCI",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121674,
+      "nombre": "JHON EVER MOLINA CHANCI",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122035,
+      "nombre": "EDIR SAMUEL CHAVARRIA MUÑOZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122670,
+      "nombre": "MILENI MONSALVE MUÑOZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122224,
+      "nombre": "HELEN YARIANI OQUENDO GOMEZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122414,
+      "nombre": "DILAN OQUENDO GOMEZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122629,
+      "nombre": "EYDAN JIMENEZ ZAPATA",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121190,
+      "nombre": "YIRFREI GARCIA CALLEJAS",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121511,
+      "nombre": "YERFRI GARCIA CALLEJAS",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122098,
+      "nombre": "YORDIN GARCIA CALLEJAS",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 71801311,
+      "nombre": "HERNANDO ANCIZAR CHAVARRIA AGUDELO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044120227,
+      "nombre": "CARLOS HUMBERTO CHAVARRIA AGUDELO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 71800987,
+      "nombre": "ELKIN JAVIER CHAVARRIA AGUDELO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121395,
+      "nombre": "NICOLAS DAVID RODRIGUEZ MAZO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122247,
+      "nombre": "LUISA FERNANDA RODRIGUEZ MAZO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 71801559,
+      "nombre": "HERNESTO DE JESUS ROJAS MAZO",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 71801418,
+      "nombre": "JUAN CARLOS RODRIGUEZ GOMEZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044120059,
+      "nombre": "MARTHA LILIANA RODRIGUEZ GOMEZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044121422,
+      "nombre": "JUAN DIEGO CORREA GOMEZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122031,
+      "nombre": "YASMIN LORENA CORRE GOMEZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "TOLEDO",
+      "documento": 1044122527,
+      "nombre": "XIMENA GOMEZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    },
+    {
+      "municipio": "SAN FRANCISCO",
+      "documento": 70381164,
+      "nombre": "RUBEN  DARIO  CORREA  VASQUEZ",
+      "error": "Validation failed: municipio: Path `municipio` is required."
+    }
+  ]
+}

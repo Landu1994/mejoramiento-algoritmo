@@ -107,11 +107,11 @@ const excelConfig = {
   },
   COUNT_ROWS: true,
   VALIDATIONS: {
-    required: ['MUNICIPIO', 'NOMBRE COMPLETO', 'TIPO DE DOCUMENTO', 'DOCUMENTO DE IDENTIDAD'],
+    required: ['DOCUMENTO DE IDENTIDAD'],
     uniqueFields: ['DOCUMENTO DE IDENTIDAD'],
-    emailFields: ['CORREO ELECTRONICO'],
-    dateFields: ['FECHA DE NACIMIENTO'],
-    numericFields: ['EDAD', 'INGRESOS FAMILIARES', 'VALOR DE MEJORAMIENTO']
+    emailFields: [],
+    dateFields: [],
+    numericFields: []
   },
   LOG_LEVEL: 'info',
   LOG_TO_FILE: true,

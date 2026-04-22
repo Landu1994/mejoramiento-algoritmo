@@ -54,7 +54,6 @@ const beneficiarioSchema = new mongoose.Schema({
   
   nombreCompleto: {
     type: String,
-    required: true,
     trim: true,
     index: true
   },
@@ -62,9 +61,7 @@ const beneficiarioSchema = new mongoose.Schema({
   // ========== DOCUMENTO DE IDENTIDAD ==========
   tipoDocumento: {
     type: String,
-    required: true,
-    trim: true,
-    enum: ['CC', 'TI', 'CE', 'RC', 'PA', 'PE', 'PEP', 'Otro']
+    trim: true
   },
   
   numeroDocumento: {
@@ -81,15 +78,12 @@ const beneficiarioSchema = new mongoose.Schema({
   },
   
   edad: {
-    type: Number,
-    min: 0,
-    max: 120
+    type: Number
   },
   
   genero: {
     type: String,
-    trim: true,
-    enum: ['M', 'F', 'Masculino', 'Femenino', 'Otro', null]
+    trim: true
   },
   
   // ========== INFORMACIÓN DE CONTACTO ==========
@@ -101,14 +95,12 @@ const beneficiarioSchema = new mongoose.Schema({
   email: {
     type: String,
     trim: true,
-    lowercase: true,
-    match: [/^\S+@\S+\.\S+$/, 'Email inválido']
+    lowercase: true
   },
   
   // ========== INFORMACIÓN SOCIOECONÓMICA ==========
   ingresosFamiliares: {
-    type: Number,
-    min: 0
+    type: Number
   },
   
   enfoqueDiferencial: {
@@ -119,8 +111,7 @@ const beneficiarioSchema = new mongoose.Schema({
   // ========== UBICACIÓN DEL PREDIO ==========
   zonaIntervencion: {
     type: String,
-    trim: true,
-    enum: ['Urbana', 'Rural', 'URBANA', 'RURAL', null]
+    trim: true
   },
   
   direccion: {
@@ -159,15 +150,13 @@ const beneficiarioSchema = new mongoose.Schema({
   },
   
   valorMejoramiento: {
-    type: Number,
-    min: 0
+    type: Number
   },
   
   // ========== DOCUMENTACIÓN ==========
   documentoPostulado: {
     type: String,
-    trim: true,
-    enum: ['Sí', 'No', 'SI', 'NO', 'Si', null]
+    trim: true
   },
   
   documentosGrupoFamiliar: {

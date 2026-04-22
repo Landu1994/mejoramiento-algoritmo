@@ -12,6 +12,81 @@ const Postulado = require('./model/BeneficiarioMejoramiento');
 const path = require('path');
 const fs = require('fs');
 
+// ========== HELPERS PARA PRESERVAR VALORES EXISTENTES ==========
+const PLACEHOLDER_VALUES = new Set(['SI', 'SÍ', 'NO', 'N/A', 'NA', 'N.D.', 'X']);
+
+function isEmptyValue(value) {
+  return value === null || value === undefined || (typeof value === 'string' && value.trim() === '');
+}
+
+function normalizeToken(value) {
+  return String(value || '').trim().toUpperCase();
+}
+
+function looksLikeStoredPath(value) {
+  if (typeof value !== 'string') return false;
+  const v = value.trim().toLowerCase();
+  return (
+    v.includes('uploads/') ||
+    v.includes('http://') ||
+    v.includes('https://') ||
+    v.includes('s3://') ||
+    v.includes('gs://')
+  );
+}
+
+function shouldKeepExisting(field, incomingValue, existingValue) {
+  const hasExisting = !isEmptyValue(existingValue);
+  if (!hasExisting) return false;
+
+  // Si Excel trae vacío/null, conserva lo que hay en Mongo
+  if (isEmptyValue(incomingValue)) return true;
+
+  // Si Excel trae un marcador (SI/NO/N.D.), conserva lo que hay en Mongo
+  if (typeof incomingValue === 'string') {
+    const token = normalizeToken(incomingValue);
+    if (PLACEHOLDER_VALUES.has(token)) return true;
+  }
+
+  return false;
+}
+
+function buildSafeSet(existingDoc, incomingDoc) {
+  const safeSet = {};
+  for (const [field, incomingValue] of Object.entries(incomingDoc)) {
+    const existingValue = existingDoc ? existingDoc[field] : undefined;
+    if (shouldKeepExisting(field, incomingValue, existingValue)) {
+      continue; // No incluir en $set, deja el valor existente
+    }
+    safeSet[field] = incomingValue;
+  }
+  return safeSet;
+}
+
+function getMunicipioKey(dato) {
+  return dato?._metadata?.sourceSheet || dato?.municipio || 'SIN_MUNICIPIO';
+}
+
+function ensureMunicipioStats(statsMap, municipio) {
+  if (!statsMap[municipio]) {
+    statsMap[municipio] = {
+      municipio,
+      totalFilasHoja: 0,
+      totalValidosHoja: 0,
+      erroresValidacionPrevia: 0,
+      totalValidosParaInyeccion: 0,
+      yaEnDB: 0,
+      nuevosInsertados: 0,
+      actualizados: 0,
+      existentesConError: 0,
+      nuevosConError: 0,
+      erroresInyeccion: 0
+    };
+  }
+
+  return statsMap[municipio];
+}
+
 async function main() {
   try {
     const args = process.argv.slice(2);
@@ -146,17 +221,57 @@ async function main() {
     let importados = 0;
     let errores = 0;
     const erroresDetalle = [];
+    const municipiosStats = {};
+    const resumenInyeccion = {
+      totalValidosParaInyeccion: resultado.documents.length,
+      yaExistianEnMongo: 0,
+      nuevosDetectados: 0,
+      insertadosNuevos: 0,
+      actualizadosExistentes: 0,
+      rechazadosTotal: 0,
+      rechazadosExistentes: 0,
+      rechazadosNuevos: 0
+    };
+
+    if (resultado?.report?.sheetDetails) {
+      for (const sheetDetail of resultado.report.sheetDetails) {
+        const municipioStats = ensureMunicipioStats(municipiosStats, sheetDetail.name || 'SIN_MUNICIPIO');
+        municipioStats.totalFilasHoja = sheetDetail.rowsProcessed || 0;
+        municipioStats.totalValidosHoja = sheetDetail.validDocuments || 0;
+        municipioStats.erroresValidacionPrevia = sheetDetail.invalidDocuments || 0;
+      }
+    }
 
     for (const dato of resultado.documents) {
+      const municipio = getMunicipioKey(dato);
+      const municipioStats = ensureMunicipioStats(municipiosStats, municipio);
+      municipioStats.totalValidosParaInyeccion++;
+
       try {
         const postuladoFields = { ...dato };
         delete postuladoFields._metadata;
+
+        // Obtener documento existente para comparar valores
+        const existingDoc = await Postulado.findOne({
+          numeroDocumento: dato.numeroDocumento
+        }).lean();
+
+        if (existingDoc) {
+          municipioStats.yaEnDB++;
+          resumenInyeccion.yaExistianEnMongo++;
+        } else {
+          resumenInyeccion.nuevosDetectados++;
+        }
+
+        // Construir set seguro: solo actualiza campos con valores reales
+        // Preserva valores existentes cuando Excel trae null, vacío o SI/NO
+        const safeFieldsToSet = buildSafeSet(existingDoc, postuladoFields);
 
         await Postulado.updateOne(
           { numeroDocumento: dato.numeroDocumento },
           {
             $set: {
-              ...postuladoFields,
+              ...safeFieldsToSet,
               convocatoria: convocatoriaData,
               estadoPostulacion: 'REGISTRADO',
               fechaPostulacion: new Date(),
@@ -177,6 +292,14 @@ async function main() {
           }
         );
 
+        if (existingDoc) {
+          municipioStats.actualizados++;
+          resumenInyeccion.actualizadosExistentes++;
+        } else {
+          municipioStats.nuevosInsertados++;
+          resumenInyeccion.insertadosNuevos++;
+        }
+
         importados++;
 
         if (importados % 100 === 0) {
@@ -184,7 +307,24 @@ async function main() {
         }
       } catch (error) {
         errores++;
+        resumenInyeccion.rechazadosTotal++;
+        municipioStats.erroresInyeccion++;
+
+        if (dato && dato.numeroDocumento) {
+          const existingForError = await Postulado.findOne({ numeroDocumento: dato.numeroDocumento })
+            .select('_id')
+            .lean();
+          if (existingForError) {
+            municipioStats.existentesConError++;
+            resumenInyeccion.rechazadosExistentes++;
+          } else {
+            municipioStats.nuevosConError++;
+            resumenInyeccion.rechazadosNuevos++;
+          }
+        }
+
         erroresDetalle.push({
+          municipio,
           documento: dato.numeroDocumento,
           nombre: dato.nombreCompleto,
           error: error.message
@@ -200,6 +340,14 @@ async function main() {
     console.log(`   ID: ${convocatoria._id}`);
     console.log(`   Importados: ${importados}`);
     console.log(`   Errores: ${errores}`);
+    console.log('\n📌 Resumen de inyección en MongoDB:');
+    console.log(`   - Ya existían en Mongo: ${resumenInyeccion.yaExistianEnMongo}`);
+    console.log(`   - Nuevos detectados: ${resumenInyeccion.nuevosDetectados}`);
+    console.log(`   - Actualizados (existentes): ${resumenInyeccion.actualizadosExistentes}`);
+    console.log(`   - Insertados nuevos: ${resumenInyeccion.insertadosNuevos}`);
+    console.log(`   - Rechazados total: ${resumenInyeccion.rechazadosTotal}`);
+    console.log(`   - Rechazados existentes: ${resumenInyeccion.rechazadosExistentes}`);
+    console.log(`   - Rechazados nuevos: ${resumenInyeccion.rechazadosNuevos}`);
 
     if (errores > 0 && errores <= 10) {
       console.log('\n❌ Errores encontrados:');
@@ -218,6 +366,20 @@ async function main() {
       `${path.basename(absolutePath, path.extname(absolutePath))}_reporte_importacion.json`
     );
 
+    const resumenMunicipios = Object.values(municipiosStats)
+      .map((m) => {
+        const exitosos = m.nuevosInsertados + m.actualizados;
+        return {
+          ...m,
+          exitososInyeccion: exitosos,
+          porcentajeExitoInyeccion:
+            m.totalValidosParaInyeccion > 0
+              ? ((exitosos / m.totalValidosParaInyeccion) * 100).toFixed(2) + '%'
+              : '0.00%'
+        };
+      })
+      .sort((a, b) => a.municipio.localeCompare(b.municipio));
+
     const reporte = {
       convocatoria: {
         _id: convocatoria._id.toString(),
@@ -231,6 +393,8 @@ async function main() {
         documentosConError: errores,
         porcentajeExito: ((importados / resultado.documents.length) * 100).toFixed(2) + '%'
       },
+      resumenInyeccion,
+      municipios: resumenMunicipios,
       errores: erroresDetalle
     };
 
