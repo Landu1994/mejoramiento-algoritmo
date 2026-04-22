@@ -1,24 +1,32 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
+
+const MONGODB_URL = process.env.MONGODB_URL;
+const COLLECTION_NAME = 'postulados-mejoramiento';
 
 async function verifyData() {
   try {
-    await mongoose.connect('mongodb://localhost:27017/viva');
+    if (!MONGODB_URL) {
+      throw new Error('Falta MONGODB_URL en variables de entorno (.env)');
+    }
+
+    await mongoose.connect(MONGODB_URL);
     
-    const count = await mongoose.connection.db.collection('algoritmo-mejoramientos').countDocuments();
-    console.log(`\n📊 Total documentos en algoritmo-mejoramientos: ${count}\n`);
+    const count = await mongoose.connection.db.collection(COLLECTION_NAME).countDocuments();
+    console.log(`\n📊 Total documentos en ${COLLECTION_NAME}: ${count}\n`);
     
     if (count > 0) {
-      const docs = await mongoose.connection.db.collection('algoritmo-mejoramientos').find({}).limit(5).toArray();
+      const docs = await mongoose.connection.db.collection(COLLECTION_NAME).find({}).limit(5).toArray();
       console.log('=== PRIMEROS 5 REGISTROS ===\n');
       docs.forEach((d, i) => {
         console.log(`${i+1}. ${d.nombreCompleto} (${d.numeroDocumento})`);
         console.log(`   Municipio: ${d.municipio}`);
-        console.log(`   Email: ${d.correoElectronico || 'N/A'}`);
-        console.log(`   Teléfono: ${d.telefonoCelular || 'N/A'}`);
+        console.log(`   Email: ${d.email || 'N/A'}`);
+        console.log(`   Teléfono: ${d.telefono || 'N/A'}`);
         console.log('');
       });
       
-      console.log('\n✅ Los datos ESTÁN en la base de datos viva, colección algoritmo-mejoramientos\n');
+      console.log(`\n✅ Los datos ESTÁN en la base ${mongoose.connection.name}, colección ${COLLECTION_NAME}\n`);
     } else {
       console.log('❌ No hay datos en la colección\n');
     }

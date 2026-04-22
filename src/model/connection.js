@@ -3,9 +3,10 @@
  * Base de datos por defecto: gogo-viva
  */
 
+require('dotenv').config();
 const mongoose = require('mongoose');
 
-const MONGODB_URL = process.env.MONGODB_URL || '';
+const MONGODB_URL = process.env.MONGODB_URL;
 
 
 // Opciones de conexión
@@ -19,6 +20,10 @@ const options = {
  */
 async function connect() {
   try {
+    if (!MONGODB_URL) {
+      throw new Error('Falta MONGODB_URL en variables de entorno (.env)');
+    }
+
     await mongoose.connect(MONGODB_URL, options);
     console.log('✅ Conectado a MongoDB');
     console.log(`   Base de datos: ${mongoose.connection.name}`);
