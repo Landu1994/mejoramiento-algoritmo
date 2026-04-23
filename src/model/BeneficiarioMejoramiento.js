@@ -221,8 +221,45 @@ const beneficiarioSchema = new mongoose.Schema({
   
   // ========== CAMPOS ADICIONALES ==========
   numeroFila: {
-    type: Number
+    type: String,
+    trim: true
   },
+
+  // ========== GRUPO FAMILIAR ==========
+  familiares: [
+    {
+      numeroFilaFamiliar: {
+        type: String,
+        trim: true
+      },
+      parentescoFamiliar: {
+        type: String,
+        trim: true
+      },
+      nombreFamiliar: {
+        type: String,
+        trim: true
+      },
+      tipoDocumentoFamiliar: {
+        type: String,
+        trim: true
+      },
+      numeroDocumentoFamiliar: {
+        type: String,
+        trim: true
+      },
+      fechaNacimientoFamiliar: {
+        type: Date
+      },
+      edadFamiliar: {
+        type: Number
+      },
+      generoFamiliar: {
+        type: String,
+        trim: true
+      }
+    }
+  ],
   
   direccionPozuelo: {
     type: String,

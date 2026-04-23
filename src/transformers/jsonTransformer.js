@@ -279,6 +279,11 @@ class JsonTransformer {
       return null;
     }
 
+    // Normalizar numeroFila: 4,1 → 4.1, mantener como String
+    if (fieldName === 'numeroFila') {
+      return String(value).trim().replace(',', '.');
+    }
+
     const validations = this.config.VALIDATIONS || {};
 
     if (validations.emailFields) {

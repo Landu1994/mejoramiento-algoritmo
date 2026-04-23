@@ -63,6 +63,57 @@ function buildSafeSet(existingDoc, incomingDoc) {
   return safeSet;
 }
 
+// ========== HELPERS PARA AGRUPACIÓN TITULAR/FAMILIARES ==========
+
+function normalizeFilaRef(value) {
+  if (value === null || value === undefined) return '';
+  return String(value).trim().replace(',', '.');
+}
+
+function getGrupoFamiliarKey(dato) {
+  const municipio = getMunicipioKey(dato);
+  const fila = normalizeFilaRef(dato?.numeroFila);
+
+  if (!fila) {
+    return `${municipio}|DOC:${dato?.numeroDocumento || 'SIN_DOC'}`;
+  }
+
+  const parteEntera = fila.split('.')[0];
+  return `${municipio}|${parteEntera}`;
+}
+
+function normalizeParentesco(value) {
+  return String(value || '').trim().toUpperCase();
+}
+
+function isTitular(dato) {
+  return normalizeParentesco(dato?.parentesco) === 'TITULAR';
+}
+
+function toDateOrNull(v) {
+  if (!v) return null;
+  const d = new Date(v);
+  return Number.isNaN(d.getTime()) ? null : d;
+}
+
+function buildFamiliarFromRow(dato) {
+  return {
+    numeroFilaFamiliar: normalizeFilaRef(dato?.numeroFila) || null,
+    parentescoFamiliar: dato?.parentesco || null,
+    nombreFamiliar: dato?.nombreCompleto || [
+      dato?.primerNombre,
+      dato?.segundoNombre,
+      dato?.primerApellido,
+      dato?.segundoApellido
+    ].filter(Boolean).join(' ') || null,
+    tipoDocumentoFamiliar: dato?.tipoDocumento || null,
+    numeroDocumentoFamiliar: dato?.numeroDocumento || null,
+    fechaNacimientoFamiliar: toDateOrNull(dato?.fechaNacimiento),
+    edadFamiliar: dato?.edad || null,
+    generoFamiliar: dato?.genero || null
+  };
+}
+
 function getMunicipioKey(dato) {
   return dato?._metadata?.sourceSheet || dato?.municipio || 'SIN_MUNICIPIO';
 }
@@ -216,21 +267,79 @@ async function main() {
       nombre: convocatoria.nombre
     };
 
-    console.log(`\n⏳ Importando ${resultado.documents.length} postulados...\n`);
+    // ========== AGRUPACIÓN POR TITULAR/FAMILIARES ==========
+    console.log(`\n⏳ Agrupando por titular y familiares...\n`);
+
+    const gruposFamiliares = new Map();
+
+    for (const dato of resultado.documents) {
+      const key = getGrupoFamiliarKey(dato);
+      if (!gruposFamiliares.has(key)) {
+        gruposFamiliares.set(key, {
+          titular: null,
+          familiares: [],
+          rows: []
+        });
+      }
+
+      const grupo = gruposFamiliares.get(key);
+      grupo.rows.push(dato);
+
+      if (isTitular(dato)) {
+        grupo.titular = dato;
+      } else {
+        grupo.familiares.push(dato);
+      }
+    }
+
+    const documentosParaInyeccion = [];
+    const erroresAgrupacion = [];
+
+    for (const [key, grupo] of gruposFamiliares.entries()) {
+      if (!grupo.titular) {
+        const fallback = grupo.rows[0];
+        erroresAgrupacion.push({
+          municipio: getMunicipioKey(fallback),
+          documento: fallback?.numeroDocumento || null,
+          nombre: fallback?.nombreCompleto || null,
+          error: `No se encontró TITULAR para grupo ${key}`
+        });
+        continue;
+      }
+
+      const titularDoc = { ...grupo.titular };
+      titularDoc.familiares = grupo.familiares.map(buildFamiliarFromRow);
+
+      // Si el titular no trae municipio pero un familiar sí, hereda
+      if (!titularDoc.municipio) {
+        const famConMunicipio = grupo.familiares.find(f => f?.municipio);
+        if (famConMunicipio?.municipio) {
+          titularDoc.municipio = famConMunicipio.municipio;
+        }
+      }
+
+      documentosParaInyeccion.push(titularDoc);
+    }
+
+    console.log(`✅ ${gruposFamiliares.size} grupos familiares detectados`);
+    console.log(`   - Titulares: ${documentosParaInyeccion.length}`);
+    console.log(`   - Grupos sin titular: ${erroresAgrupacion.length}\n`);
+
+    console.log(`⏳ Importando ${documentosParaInyeccion.length} titulares (con familiares agrupados)...\n`);
 
     let importados = 0;
-    let errores = 0;
-    const erroresDetalle = [];
+    let errores = erroresAgrupacion.length;
+    const erroresDetalle = [...erroresAgrupacion];
     const municipiosStats = {};
     const resumenInyeccion = {
-      totalValidosParaInyeccion: resultado.documents.length,
+      totalValidosParaInyeccion: documentosParaInyeccion.length,
       yaExistianEnMongo: 0,
       nuevosDetectados: 0,
       insertadosNuevos: 0,
       actualizadosExistentes: 0,
-      rechazadosTotal: 0,
+      rechazadosTotal: erroresAgrupacion.length,
       rechazadosExistentes: 0,
-      rechazadosNuevos: 0
+      rechazadosNuevos: erroresAgrupacion.length
     };
 
     if (resultado?.report?.sheetDetails) {
@@ -242,7 +351,7 @@ async function main() {
       }
     }
 
-    for (const dato of resultado.documents) {
+    for (const dato of documentosParaInyeccion) {
       const municipio = getMunicipioKey(dato);
       const municipioStats = ensureMunicipioStats(municipiosStats, municipio);
       municipioStats.totalValidosParaInyeccion++;
@@ -303,7 +412,7 @@ async function main() {
         importados++;
 
         if (importados % 100 === 0) {
-          process.stdout.write(`   Importados: ${importados}/${resultado.documents.length}\r`);
+          process.stdout.write(`   Importados: ${importados}/${documentosParaInyeccion.length}\r`);
         }
       } catch (error) {
         errores++;
@@ -388,10 +497,12 @@ async function main() {
       procesamiento: {
         archivoOrigen: path.basename(filePath),
         fechaProcesamiento: new Date(),
-        totalDocumentos: resultado.documents.length,
+        totalDocumentos: documentosParaInyeccion.length,
         documentosImportados: importados,
         documentosConError: errores,
-        porcentajeExito: ((importados / resultado.documents.length) * 100).toFixed(2) + '%'
+        porcentajeExito: documentosParaInyeccion.length > 0 ? ((importados / documentosParaInyeccion.length) * 100).toFixed(2) + '%' : '0.00%',
+        gruposFamiliares: gruposFamiliares.size,
+        filasOriginales: resultado.documents.length
       },
       resumenInyeccion,
       municipios: resumenMunicipios,
