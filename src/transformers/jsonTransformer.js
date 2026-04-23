@@ -248,6 +248,21 @@ class JsonTransformer {
       result.data[fieldName] = this.normalizeValue(value, fieldName);
     });
 
+    // Fallback: Si nombreCompleto está vacío, construirlo desde componentes
+    // Esto maneja casos donde la columna no tiene header (ej: San Pedro de Urabá)
+    if (!result.data.nombreCompleto || String(result.data.nombreCompleto).trim() === '') {
+      const componentes = [
+        result.data.primerNombre,
+        result.data.segundoNombre,
+        result.data.primerApellido,
+        result.data.segundoApellido
+      ].filter(c => c !== null && c !== undefined && String(c).trim() !== '');
+
+      if (componentes.length > 0) {
+        result.data.nombreCompleto = componentes.join(' ');
+      }
+    }
+
     // Aplicar validaciones
     const validationResult = this.validateDocument(result.data, sheetName, rowNumber);
     
