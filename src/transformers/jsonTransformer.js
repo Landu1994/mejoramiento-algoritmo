@@ -366,45 +366,36 @@ class JsonTransformer {
       return result;
     }
 
-    // Normalizar números antes de insertar en Mongo
-    const numericFields = ['ingresosFamiliares', 'valorMejoramiento', 'edad'];
-    for (const field of numericFields) {
-      if (doc[field] === null || doc[field] === undefined || doc[field] === '') {
+    // Campos monetarios: guardar valor original como String + campo numérico limpio opcional
+    const monetaryFields = ['ingresosFamiliares', 'valorMejoramiento'];
+    for (const field of monetaryFields) {
+      const valorOriginal = doc[field];
+      if (valorOriginal === null || valorOriginal === undefined || valorOriginal === '') {
+        doc[field] = null;
+        doc[`${field}Numero`] = null;
         continue;
       }
-
-      const valorOriginal = doc[field];
-      const valorConvertido = this.limpiarNumeroFlexible(valorOriginal);
-
-      if (Number.isNaN(valorConvertido)) {
-        result.valid = false;
-        result.errors.push({
-          type: 'INVALID_NUMBER',
-          field,
-          value: valorOriginal,
-          message: 'No se pudo convertir a número'
-        });
-      } else {
-        doc[field] = valorConvertido;
-      }
+      // Preservar el valor original como string (sin importar si es texto libre o número)
+      doc[field] = String(valorOriginal).trim();
+      // Intentar extraer valor numérico limpio (sin rechazar el registro si falla)
+      const valorNumerico = this.limpiarNumeroFlexible(valorOriginal);
+      doc[`${field}Numero`] = Number.isNaN(valorNumerico) ? null : valorNumerico;
     }
 
-    // Normalizar fecha antes de insertar en Mongo
+    // Campo edad: convertir a número si es posible, nunca rechazar el registro
+    if (doc.edad !== null && doc.edad !== undefined && doc.edad !== '') {
+      const edadNum = this.limpiarNumeroFlexible(doc.edad);
+      doc.edad = Number.isNaN(edadNum) ? null : edadNum;
+    } else {
+      doc.edad = null;
+    }
+
+    // Fecha de nacimiento: intentar normalizar, guardar original como string, nunca rechazar
     if (doc.fechaNacimiento !== null && doc.fechaNacimiento !== undefined && doc.fechaNacimiento !== '') {
       const valorOriginalFecha = doc.fechaNacimiento;
+      doc.fechaNacimientoOriginal = String(valorOriginalFecha).trim();
       const fechaNormalizada = this.normalizeFecha(valorOriginalFecha);
-
-      if (Number.isNaN(fechaNormalizada)) {
-        result.valid = false;
-        result.errors.push({
-          type: 'INVALID_DATE',
-          field: 'fechaNacimiento',
-          value: valorOriginalFecha,
-          message: 'No se pudo normalizar la fecha antes de guardar'
-        });
-      } else {
-        doc.fechaNacimiento = fechaNormalizada;
-      }
+      doc.fechaNacimiento = Number.isNaN(fechaNormalizada) ? null : fechaNormalizada;
     }
 
     // Validar unicidad dentro del archivo (evitar duplicados en el Excel)

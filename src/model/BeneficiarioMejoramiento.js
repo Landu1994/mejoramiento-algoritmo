@@ -76,6 +76,11 @@ const beneficiarioSchema = new mongoose.Schema({
   fechaNacimiento: {
     type: Date
   },
+
+  fechaNacimientoOriginal: {
+    type: String,
+    trim: true
+  },
   
   edad: {
     type: Number
@@ -100,6 +105,11 @@ const beneficiarioSchema = new mongoose.Schema({
   
   // ========== INFORMACIÓN SOCIOECONÓMICA ==========
   ingresosFamiliares: {
+    type: String,
+    trim: true
+  },
+
+  ingresosFamiliaresNumero: {
     type: Number
   },
   
@@ -150,6 +160,11 @@ const beneficiarioSchema = new mongoose.Schema({
   },
   
   valorMejoramiento: {
+    type: String,
+    trim: true
+  },
+
+  valorMejoramientoNumero: {
     type: Number
   },
   
@@ -272,8 +287,8 @@ const beneficiarioSchema = new mongoose.Schema({
   },
   
   presupuesto: {
-    type: Number,
-    min: 0
+    type: mongoose.Schema.Types.Mixed,
+    default: null
   },
   
   peritaje: {

@@ -177,8 +177,14 @@ async function main() {
     const processor = new ExcelProcessor(config, logger);
     const resultado = await processor.processFile(absolutePath);
 
+    const filasEnExcel       = resultado?.report?.summary?.totalRowsProcessed || resultado?.documents?.length || 0;
+    const rechazadasEnLectura = resultado?.report?.summary?.invalidDocuments || 0;
+    const validasDelExcel     = resultado?.documents?.length || 0;
+
     console.log('📊 Resultado del procesamiento:');
-    console.log(`   - Documentos válidos: ${resultado?.documents?.length || 0}`);
+    console.log(`   - Filas en el Excel:       ${filasEnExcel}`);
+    console.log(`   - Rechazadas en lectura:   ${rechazadasEnLectura}`);
+    console.log(`   - Filas válidas:           ${validasDelExcel}`);
     console.log(`   - Éxito: ${resultado?.success ? 'Sí' : 'No'}\n`);
 
     if (!resultado || !resultado.success || !resultado.documents || resultado.documents.length === 0) {
@@ -267,79 +273,25 @@ async function main() {
       nombre: convocatoria.nombre
     };
 
-    // ========== AGRUPACIÓN POR TITULAR/FAMILIARES ==========
-    console.log(`\n⏳ Agrupando por titular y familiares...\n`);
+    // ========== CADA FILA ES UN TITULAR INDEPENDIENTE ==========
+    // Todos los registros de la matriz son titulares, no se agrupa por familiares.
+    const documentosParaInyeccion = resultado.documents;
+    const gruposFamiliares = { size: documentosParaInyeccion.length };
 
-    const gruposFamiliares = new Map();
-
-    for (const dato of resultado.documents) {
-      const key = getGrupoFamiliarKey(dato);
-      if (!gruposFamiliares.has(key)) {
-        gruposFamiliares.set(key, {
-          titular: null,
-          familiares: [],
-          rows: []
-        });
-      }
-
-      const grupo = gruposFamiliares.get(key);
-      grupo.rows.push(dato);
-
-      if (isTitular(dato)) {
-        grupo.titular = dato;
-      } else {
-        grupo.familiares.push(dato);
-      }
-    }
-
-    const documentosParaInyeccion = [];
-    const erroresAgrupacion = [];
-
-    for (const [key, grupo] of gruposFamiliares.entries()) {
-      if (!grupo.titular) {
-        const fallback = grupo.rows[0];
-        erroresAgrupacion.push({
-          municipio: getMunicipioKey(fallback),
-          documento: fallback?.numeroDocumento || null,
-          nombre: fallback?.nombreCompleto || null,
-          error: `No se encontró TITULAR para grupo ${key}`
-        });
-        continue;
-      }
-
-      const titularDoc = { ...grupo.titular };
-      titularDoc.familiares = grupo.familiares.map(buildFamiliarFromRow);
-
-      // Si el titular no trae municipio pero un familiar sí, hereda
-      if (!titularDoc.municipio) {
-        const famConMunicipio = grupo.familiares.find(f => f?.municipio);
-        if (famConMunicipio?.municipio) {
-          titularDoc.municipio = famConMunicipio.municipio;
-        }
-      }
-
-      documentosParaInyeccion.push(titularDoc);
-    }
-
-    console.log(`✅ ${gruposFamiliares.size} grupos familiares detectados`);
-    console.log(`   - Titulares: ${documentosParaInyeccion.length}`);
-    console.log(`   - Grupos sin titular: ${erroresAgrupacion.length}\n`);
-
-    console.log(`⏳ Importando ${documentosParaInyeccion.length} titulares (con familiares agrupados)...\n`);
+    console.log(`\n✅ ${documentosParaInyeccion.length} registros listos para inyección\n`);
+    console.log(`⏳ Importando ${documentosParaInyeccion.length} registros...\n`);
 
     let importados = 0;
-    let errores = erroresAgrupacion.length;
-    const erroresDetalle = [...erroresAgrupacion];
+    let errores = 0;
+    const erroresDetalle = [];
     const municipiosStats = {};
     const resumenInyeccion = {
       totalValidosParaInyeccion: documentosParaInyeccion.length,
       yaExistianEnMongo: 0,
       nuevosDetectados: 0,
       insertadosNuevos: 0,
-      actualizadosExistentes: 0,
-      rechazadosTotal: erroresAgrupacion.length,
-      rechazadosExistentes: 0,
-      rechazadosNuevos: erroresAgrupacion.length
+      rechazadosTotal: 0,
+      rechazadosNuevos: 0
     };
 
     if (resultado?.report?.sheetDetails) {
@@ -360,79 +312,55 @@ async function main() {
         const postuladoFields = { ...dato };
         delete postuladoFields._metadata;
 
-        // Obtener documento existente para comparar valores
+        // Si la cédula ya existe en la BD, NO modificar nada: dejar el registro intacto
         const existingDoc = await Postulado.findOne({
           numeroDocumento: dato.numeroDocumento
-        }).lean();
+        }).select('_id').lean();
 
         if (existingDoc) {
           municipioStats.yaEnDB++;
           resumenInyeccion.yaExistianEnMongo++;
-        } else {
-          resumenInyeccion.nuevosDetectados++;
-        }
-
-        // Construir set seguro: solo actualiza campos con valores reales
-        // Preserva valores existentes cuando Excel trae null, vacío o SI/NO
-        const safeFieldsToSet = buildSafeSet(existingDoc, postuladoFields);
-
-        await Postulado.updateOne(
-          { numeroDocumento: dato.numeroDocumento },
-          {
-            $set: {
-              ...safeFieldsToSet,
-              convocatoria: convocatoriaData,
-              estadoPostulacion: 'REGISTRADO',
-              fechaPostulacion: new Date(),
-              metadata: {
-                archivoOrigen: path.basename(filePath),
-                fechaImportacion: new Date(),
-                ...(dato._metadata && {
-                  hojaOrigen: dato._metadata.sourceSheet,
-                  filaOrigen: dato._metadata.sourceRow
-                })
-              }
-            }
-          },
-          {
-            upsert: true,
-            runValidators: true,
-            setDefaultsOnInsert: true
+          importados++;
+          if (importados % 100 === 0) {
+            process.stdout.write(`   Procesados: ${importados}/${documentosParaInyeccion.length}\r`);
           }
-        );
-
-        if (existingDoc) {
-          municipioStats.actualizados++;
-          resumenInyeccion.actualizadosExistentes++;
-        } else {
-          municipioStats.nuevosInsertados++;
-          resumenInyeccion.insertadosNuevos++;
+          continue;
         }
 
+        // Documento nuevo: insertar
+        resumenInyeccion.nuevosDetectados++;
+
+        await Postulado.create({
+          ...postuladoFields,
+          convocatoria: convocatoriaData,
+          estadoPostulacion: 'REGISTRADO',
+          fechaPostulacion: new Date(),
+          metadata: {
+            archivoOrigen: path.basename(filePath),
+            fechaImportacion: new Date(),
+            ...(dato._metadata && {
+              hojaOrigen: dato._metadata.sourceSheet,
+              filaOrigen: dato._metadata.sourceRow
+            })
+          }
+        });
+
+        municipioStats.nuevosInsertados++;
+        resumenInyeccion.insertadosNuevos++;
         importados++;
 
         if (importados % 100 === 0) {
-          process.stdout.write(`   Importados: ${importados}/${documentosParaInyeccion.length}\r`);
+          process.stdout.write(`   Procesados: ${importados}/${documentosParaInyeccion.length}\r`);
         }
       } catch (error) {
         errores++;
         resumenInyeccion.rechazadosTotal++;
         municipioStats.erroresInyeccion++;
-
-        if (dato && dato.numeroDocumento) {
-          const existingForError = await Postulado.findOne({ numeroDocumento: dato.numeroDocumento })
-            .select('_id')
-            .lean();
-          if (existingForError) {
-            municipioStats.existentesConError++;
-            resumenInyeccion.rechazadosExistentes++;
-          } else {
-            municipioStats.nuevosConError++;
-            resumenInyeccion.rechazadosNuevos++;
-          }
-        }
+        municipioStats.nuevosConError++;
+        resumenInyeccion.rechazadosNuevos++;
 
         erroresDetalle.push({
+          tipo: 'ERROR_INYECCION',
           municipio,
           documento: dato.numeroDocumento,
           nombre: dato.nombreCompleto,
@@ -441,32 +369,40 @@ async function main() {
       }
     }
 
+    // ── Agrupar rechazos por tipo ──────────────────────────────────────────────
+    const sinDocumento    = resultado?.report?.sheetDetails?.reduce((a, s) => a + (s.invalidDocuments || 0), 0) || rechazadasEnLectura;
+    const erroresInyeccion = erroresDetalle.filter(e => e.tipo === 'ERROR_INYECCION');
+    const totalRechazados = sinDocumento + erroresInyeccion.length;
+
     console.log('\n');
     console.log('='.repeat(80));
     console.log('✅ IMPORTACIÓN COMPLETADA');
     console.log('='.repeat(80));
-    console.log(`   Convocatoria: ${convocatoria.nombre}`);
-    console.log(`   ID: ${convocatoria._id}`);
-    console.log(`   Importados: ${importados}`);
-    console.log(`   Errores: ${errores}`);
-    console.log('\n📌 Resumen de inyección en MongoDB:');
-    console.log(`   - Ya existían en Mongo: ${resumenInyeccion.yaExistianEnMongo}`);
-    console.log(`   - Nuevos detectados: ${resumenInyeccion.nuevosDetectados}`);
-    console.log(`   - Actualizados (existentes): ${resumenInyeccion.actualizadosExistentes}`);
-    console.log(`   - Insertados nuevos: ${resumenInyeccion.insertadosNuevos}`);
-    console.log(`   - Rechazados total: ${resumenInyeccion.rechazadosTotal}`);
-    console.log(`   - Rechazados existentes: ${resumenInyeccion.rechazadosExistentes}`);
-    console.log(`   - Rechazados nuevos: ${resumenInyeccion.rechazadosNuevos}`);
+    console.log(`   Convocatoria : ${convocatoria.nombre}`);
+    console.log(`   ID           : ${convocatoria._id}`);
 
-    if (errores > 0 && errores <= 10) {
-      console.log('\n❌ Errores encontrados:');
-      erroresDetalle.forEach(e => {
-        console.log(`   - ${e.nombre} (${e.documento}): ${e.error}`);
-      });
-    } else if (errores > 10) {
-      console.log(`\n❌ Se encontraron ${errores} errores (mostrando primeros 10):`);
-      erroresDetalle.slice(0, 10).forEach(e => {
-        console.log(`   - ${e.nombre} (${e.documento}): ${e.error}`);
+    console.log('\n📊 TRAZABILIDAD COMPLETA:');
+    console.log('─'.repeat(50));
+    console.log('  📂 EXCEL');
+    console.log(`     Filas totales en el archivo       : ${filasEnExcel}`);
+    console.log(`     Rechazadas en lectura (sin cédula,`);
+    console.log(`       duplicadas, datos inválidos)    : ${rechazadasEnLectura}`);
+    console.log(`     Filas válidas del Excel           : ${validasDelExcel}`);
+    console.log('─'.repeat(50));
+    console.log('  💾 INYECCIÓN EN MONGODB');
+    console.log(`     Ya existían en BD (no modificados): ${resumenInyeccion.yaExistianEnMongo}`);
+    console.log(`     Nuevos insertados exitosamente    : ${resumenInyeccion.insertadosNuevos}`);
+    console.log(`     Rechazados en inserción           : ${erroresInyeccion.length}`);
+    console.log('─'.repeat(50));
+    console.log(`  📌 TOTAL RECHAZADOS (todas las fases): ${totalRechazados}`);
+    console.log('='.repeat(80));
+
+    if (erroresInyeccion.length > 0) {
+      const mostrar = erroresInyeccion.slice(0, 20);
+      console.log(`\n❌ ERRORES EN INYECCIÓN (${erroresInyeccion.length} registros${erroresInyeccion.length > 20 ? ', mostrando primeros 20' : ''}):`); 
+      mostrar.forEach(e => {
+        console.log(`   • [${e.municipio}] ${e.nombre || 'Sin nombre'} (CC: ${e.documento})`);
+        console.log(`     → ${e.error}`);
       });
     }
 
@@ -477,7 +413,7 @@ async function main() {
 
     const resumenMunicipios = Object.values(municipiosStats)
       .map((m) => {
-        const exitosos = m.nuevosInsertados + m.actualizados;
+        const exitosos = m.nuevosInsertados || 0;
         return {
           ...m,
           exitososInyeccion: exitosos,
@@ -497,12 +433,17 @@ async function main() {
       procesamiento: {
         archivoOrigen: path.basename(filePath),
         fechaProcesamiento: new Date(),
-        totalDocumentos: documentosParaInyeccion.length,
-        documentosImportados: importados,
-        documentosConError: errores,
-        porcentajeExito: documentosParaInyeccion.length > 0 ? ((importados / documentosParaInyeccion.length) * 100).toFixed(2) + '%' : '0.00%',
-        gruposFamiliares: gruposFamiliares.size,
-        filasOriginales: resultado.documents.length
+        filasEnExcel,
+        rechazadasEnLectura,
+        validasDelExcel,
+        registrosParaInyeccion: documentosParaInyeccion.length,
+        yaExistianEnBD: resumenInyeccion.yaExistianEnMongo,
+        insertadosNuevos: resumenInyeccion.insertadosNuevos,
+        erroresInyeccion: erroresInyeccion.length,
+        totalRechazados,
+        porcentajeExito: filasEnExcel > 0
+          ? (((resumenInyeccion.yaExistianEnMongo + resumenInyeccion.insertadosNuevos) / filasEnExcel) * 100).toFixed(2) + '%'
+          : '0.00%'
       },
       resumenInyeccion,
       municipios: resumenMunicipios,

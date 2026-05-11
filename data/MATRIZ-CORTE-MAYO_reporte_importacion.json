@@ -1,0 +1,45 @@
+{
+  "convocatoria": {
+    "_id": "69e06a1e0e9d2bb0d4adb251",
+    "nombre": "VIVA MI CASA Mejoradas para ellas"
+  },
+  "procesamiento": {
+    "archivoOrigen": "MATRIZ-CORTE-MAYO.xlsx",
+    "fechaProcesamiento": "2026-05-11T19:29:40.922Z",
+    "filasEnExcel": 7549,
+    "rechazadasEnLectura": 2,
+    "validasDelExcel": 7547,
+    "registrosParaInyeccion": 7547,
+    "yaExistianEnBD": 7358,
+    "insertadosNuevos": 189,
+    "erroresInyeccion": 0,
+    "totalRechazados": 2,
+    "porcentajeExito": "99.97%"
+  },
+  "resumenInyeccion": {
+    "totalValidosParaInyeccion": 7547,
+    "yaExistianEnMongo": 7358,
+    "nuevosDetectados": 189,
+    "insertadosNuevos": 189,
+    "rechazadosTotal": 0,
+    "rechazadosNuevos": 0
+  },
+  "municipios": [
+    {
+      "municipio": "Hoja1",
+      "totalFilasHoja": 7549,
+      "totalValidosHoja": 7547,
+      "erroresValidacionPrevia": 2,
+      "totalValidosParaInyeccion": 7547,
+      "yaEnDB": 7358,
+      "nuevosInsertados": 189,
+      "actualizados": 0,
+      "existentesConError": 0,
+      "nuevosConError": 0,
+      "erroresInyeccion": 0,
+      "exitososInyeccion": 189,
+      "porcentajeExitoInyeccion": "2.50%"
+    }
+  ],
+  "errores": []
+}
