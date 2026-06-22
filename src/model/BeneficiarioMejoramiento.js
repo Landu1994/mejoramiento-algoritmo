@@ -99,8 +99,7 @@ const beneficiarioSchema = new mongoose.Schema({
   
   email: {
     type: String,
-    trim: true,
-    lowercase: true
+    trim: true
   },
   
   // ========== INFORMACIÓN SOCIOECONÓMICA ==========

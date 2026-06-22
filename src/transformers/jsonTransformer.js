@@ -13,6 +13,11 @@ class JsonTransformer {
     this.seenValues = new Map(); // Para validar unicidad
   }
 
+  normalizeTextValue(value) {
+    const cleaned = DataSanitizers.cleanString(value);
+    return cleaned ? cleaned.toUpperCase() : null;
+  }
+
   /**
    * Limpiar formatos de moneda y convertir a número
    * @param {*} valor - Valor de entrada
@@ -331,7 +336,7 @@ class JsonTransformer {
     }
 
     if (typeof value === 'string') {
-      return value.trim();
+      return this.normalizeTextValue(value);
     }
 
     if (typeof value === 'boolean') {

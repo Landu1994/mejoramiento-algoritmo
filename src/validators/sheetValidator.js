@@ -11,6 +11,17 @@ class SheetValidator {
     this.logger = logger;
   }
 
+  normalizeSheetName(sheetName) {
+    return (sheetName || '').toString().trim().toLowerCase();
+  }
+
+  shouldIgnoreSheet(sheetName) {
+    const ignoredSheets = this.config.IGNORE_SHEETS || [];
+    const normalizedSheetName = this.normalizeSheetName(sheetName);
+
+    return ignoredSheets.some(name => this.normalizeSheetName(name) === normalizedSheetName);
+  }
+
   /**
    * Validar la estructura de una hoja
    * RF04 - Evaluar cada hoja de forma independiente
@@ -134,7 +145,7 @@ class SheetValidator {
       return !expectedLower.has(canon.toLowerCase());
     });
 
-    if (extraColumns.length > 0) {
+    if (extraColumns.length > 0 && !this.config.ALLOW_EXTRA_COLUMNS) {
       result.warnings.push({
         type: 'EXTRA_COLUMNS',
         message: `Columnas no reconocidas (sin mapeo ni alias): ${extraColumns.join(', ')}`,

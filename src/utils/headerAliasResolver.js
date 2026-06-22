@@ -8,6 +8,7 @@ function normalizeHeaderKey(header) {
   return header
     .toString()
     .trim()
+    .replace(/_+/g, ' ')
     .replace(/\s+/g, ' ')
     .toLowerCase();
 }
@@ -18,6 +19,8 @@ function normalizeHeaderKey(header) {
  * Keys are normalized with normalizeHeaderKey.
  */
 const DEFAULT_HEADER_ALIASES = {
+  '# id': '#',
+  id: '#',
   'documendo de identidad': 'DOCUMENTO DE IDENTIDAD',
   'subsidios otorgados externos (fecha entidad otorgante valor)':
     'SUBSIDIOS OTORGADOS EXTERNOS (fecha entidad otorgante valor)',
@@ -90,7 +93,7 @@ function resolveCanonicalHeader(header, config) {
   const raw = header?.toString();
   if (!raw) return '';
 
-  const collapsed = raw.trim().replace(/\s+/g, ' ');
+  const collapsed = raw.trim().replace(/_+/g, ' ').replace(/\s+/g, ' ');
   const key = normalizeHeaderKey(collapsed);
   if (!key) return '';
 

@@ -91,6 +91,22 @@ async function main() {
       );
 
       console.log(`Reporte guardado en: ${reportPath}\n`);
+
+      const rejectedRowsPath = path.join(
+        path.dirname(absolutePath),
+        `${path.basename(absolutePath, path.extname(absolutePath))}_rechazados.json`
+      );
+
+      fs.writeFileSync(
+        rejectedRowsPath,
+        JSON.stringify({
+          rejectedRows: result.report.rejectedRows || [],
+          rejectedSheets: result.report.rejectedSheets || []
+        }, null, 2),
+        'utf-8'
+      );
+
+      console.log(`Consolidado de rechazados guardado en: ${rejectedRowsPath}\n`);
     } else {
       console.log('\nEl procesamiento finalizo con errores\n');
       console.error('Error:', result.error);

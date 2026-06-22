@@ -70,6 +70,16 @@ function normalizeFilaRef(value) {
   return String(value).trim().replace(',', '.');
 }
 
+function hasDecimalFila(value) {
+  const fila = normalizeFilaRef(value);
+  return /^\d+\.\d+$/.test(fila);
+}
+
+function isNaturalFila(value) {
+  const fila = normalizeFilaRef(value);
+  return /^\d+$/.test(fila);
+}
+
 function getGrupoFamiliarKey(dato) {
   const municipio = getMunicipioKey(dato);
   const fila = normalizeFilaRef(dato?.numeroFila);
@@ -88,6 +98,69 @@ function normalizeParentesco(value) {
 
 function isTitular(dato) {
   return normalizeParentesco(dato?.parentesco) === 'TITULAR';
+}
+
+function buildFamilyGroups(rows) {
+  const groups = new Map();
+
+  for (const row of rows) {
+    const groupKey = getGrupoFamiliarKey(row);
+
+    if (!groups.has(groupKey)) {
+      groups.set(groupKey, {
+        key: groupKey,
+        titular: null,
+        firstNatural: null,
+        fallback: null,
+        familiares: []
+      });
+    }
+
+    const group = groups.get(groupKey);
+
+    if (!group.fallback) {
+      group.fallback = row;
+    }
+
+    if (!group.firstNatural && isNaturalFila(row?.numeroFila)) {
+      group.firstNatural = row;
+    }
+
+    if (isTitular(row) && !hasDecimalFila(row?.numeroFila) && !group.titular) {
+      group.titular = row;
+      continue;
+    }
+
+    if (hasDecimalFila(row?.numeroFila) || !isTitular(row)) {
+      group.familiares.push(row);
+      continue;
+    }
+
+    if (!group.titular) {
+      group.titular = row;
+    } else {
+      group.familiares.push(row);
+    }
+  }
+
+  return Array.from(groups.values()).map(group => {
+    const titular = group.titular || group.firstNatural || group.fallback;
+    const familiares = group.familiares.filter(familiar => {
+      if (!titular) return true;
+      if (familiar === titular) return false;
+
+      return !(
+        familiar.numeroDocumento &&
+        titular.numeroDocumento &&
+        familiar.numeroDocumento === titular.numeroDocumento
+      );
+    });
+
+    return {
+      titular,
+      familiares
+    };
+  }).filter(group => group.titular);
 }
 
 function toDateOrNull(v) {
@@ -273,12 +346,15 @@ async function main() {
       nombre: convocatoria.nombre
     };
 
-    // ========== CADA FILA ES UN TITULAR INDEPENDIENTE ==========
-    // Todos los registros de la matriz son titulares, no se agrupa por familiares.
-    const documentosParaInyeccion = resultado.documents;
-    const gruposFamiliares = { size: documentosParaInyeccion.length };
+    const gruposFamiliares = buildFamilyGroups(resultado.documents);
+    const documentosParaInyeccion = gruposFamiliares.map(({ titular, familiares }) => ({
+      ...titular,
+      numeroFila: normalizeFilaRef(titular.numeroFila) || null,
+      familiares: familiares.map(buildFamiliarFromRow)
+    }));
 
     console.log(`\n✅ ${documentosParaInyeccion.length} registros listos para inyección\n`);
+    console.log(`👨‍👩‍👧‍👦 Núcleos familiares detectados: ${gruposFamiliares.length}`);
     console.log(`⏳ Importando ${documentosParaInyeccion.length} registros...\n`);
 
     let importados = 0;
@@ -312,10 +388,18 @@ async function main() {
         const postuladoFields = { ...dato };
         delete postuladoFields._metadata;
 
-        // Si la cédula ya existe en la BD, NO modificar nada: dejar el registro intacto
         const existingDoc = await Postulado.findOne({
           numeroDocumento: dato.numeroDocumento
-        }).select('_id').lean();
+        }).lean();
+
+        const metadata = {
+          archivoOrigen: path.basename(filePath),
+          fechaImportacion: new Date(),
+          ...(dato._metadata && {
+            hojaOrigen: dato._metadata.sourceSheet,
+            filaOrigen: dato._metadata.sourceRow
+          })
+        };
 
         if (existingDoc) {
           municipioStats.yaEnDB++;
@@ -335,14 +419,7 @@ async function main() {
           convocatoria: convocatoriaData,
           estadoPostulacion: 'REGISTRADO',
           fechaPostulacion: new Date(),
-          metadata: {
-            archivoOrigen: path.basename(filePath),
-            fechaImportacion: new Date(),
-            ...(dato._metadata && {
-              hojaOrigen: dato._metadata.sourceSheet,
-              filaOrigen: dato._metadata.sourceRow
-            })
-          }
+          metadata
         });
 
         municipioStats.nuevosInsertados++;

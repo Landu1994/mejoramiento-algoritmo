@@ -20,6 +20,7 @@ class ExcelProcessor {
     this.stats = {
       totalSheets: 0,
       processedSheets: 0,
+      skippedSheets: 0,
       validSheets: 0,
       invalidSheets: 0,
       totalRows: 0,
@@ -59,6 +60,24 @@ class ExcelProcessor {
       // Procesar cada hoja
       for (let i = 0; i < workbook.SheetNames.length; i++) {
         const sheetName = workbook.SheetNames[i];
+
+        if (this.validator.shouldIgnoreSheet(sheetName)) {
+          this.logger.info(`Omitiendo hoja auxiliar "${sheetName}" por configuración`);
+          this.stats.processedSheets++;
+          this.stats.skippedSheets++;
+          sheetResults.push({
+            sheetName,
+            skipped: true,
+            valid: true,
+            skipReason: 'IGNORED_BY_CONFIG',
+            documents: [],
+            errors: [],
+            rowsProcessed: 0,
+            validDocuments: 0,
+            invalidDocuments: 0
+          });
+          continue;
+        }
         
         this.logger.info(`\nProcesando hoja ${i + 1}/${this.stats.totalSheets}: "${sheetName}"`);
         
@@ -265,6 +284,7 @@ class ExcelProcessor {
       summary: {
         totalSheets: this.stats.totalSheets,
         processedSheets: this.stats.processedSheets,
+        skippedSheets: this.stats.skippedSheets,
         validSheets: this.stats.validSheets,
         invalidSheets: this.stats.invalidSheets,
         totalRowsProcessed: this.stats.processedRows,
@@ -277,11 +297,26 @@ class ExcelProcessor {
       sheetDetails: sheetResults.map(result => ({
         name: result.sheetName,
         valid: result.valid,
+        skipped: result.skipped || false,
+        skipReason: result.skipReason || null,
         rowsProcessed: result.rowsProcessed || 0,
         validDocuments: result.validDocuments || 0,
         invalidDocuments: result.invalidDocuments || 0,
         errors: result.validationErrors || result.errors || []
       })),
+      rejectedRows: sheetResults.flatMap(result =>
+        (result.errors || []).map(error => ({
+          sheet: error.sheet,
+          row: error.row,
+          errors: error.errors
+        }))
+      ),
+      rejectedSheets: sheetResults
+        .filter(result => result.valid === false)
+        .map(result => ({
+          sheet: result.sheetName,
+          errors: result.validationErrors || result.errors || []
+        })),
       globalErrors: this.stats.errors
     };
 
@@ -292,6 +327,7 @@ class ExcelProcessor {
     console.log(`Total hojas: ${report.summary.totalSheets}`);
     console.log(`Hojas válidas: ${report.summary.validSheets}`);
     console.log(`Hojas inválidas: ${report.summary.invalidSheets}`);
+    console.log(`Hojas omitidas: ${report.summary.skippedSheets}`);
     console.log(`Filas procesadas: ${report.summary.totalRowsProcessed}`);
     console.log(`Documentos válidos: ${report.summary.validDocuments}`);
     console.log(`Documentos inválidos: ${report.summary.invalidDocuments}`);

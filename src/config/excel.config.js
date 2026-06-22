@@ -2,12 +2,18 @@
  * Excel processing configuration (RF01, RF02).
  * Column order in the file may differ; mapping matches headers case-insensitively.
  * Optional HEADER_ALIASES: { "typo normalizado": "Nombre exacto en EXPECTED_COLUMNS" }
- * (keys are matched after trim + collapse spaces + lower case; see headerAliasResolver.js).
+ * Keys are matched after trim, underscore normalization, space collapse and lower case.
  */
 
 const excelConfig = {
-  HEADER_ALIASES: {},
+  HEADER_ALIASES: {
+    'DOCUMENDO DE IDENTIDAD': 'DOCUMENTO DE IDENTIDAD',
+    'DOCUMENDO IDENTIDAD': 'DOCUMENTO DE IDENTIDAD',
+    'DOCUMENTO IDENTIDAD': 'DOCUMENTO DE IDENTIDAD'
+  },
   HEADER_ROW: 0,
+  IGNORE_SHEETS: ['PLANTILLA', 'INSTRUCTIVO', 'HOJA1', 'HOJA2', 'HOJA3'],
+  ALLOW_EXTRA_COLUMNS: true,
   EXPECTED_COLUMNS: [
     'SUBREGIÓN',
     'MUNICIPIO',
@@ -35,6 +41,7 @@ const excelConfig = {
     'VIABILIDAD',
     'VALOR DE MEJORAMIENTO',
     'DOCUMENTO POSTULADO',
+    'DOCUMENTOS GRUPO FAMILIAR',
     'DOCUMENTOS GRUPO FAMILIAR',
     'TTO DE DATOS',
     'SOPORTE TENENCIA',
