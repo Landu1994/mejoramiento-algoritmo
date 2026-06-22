@@ -11,9 +11,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Output files
-data/*_output.json
-data/*_report.json
+
 
 # Environment variables
 .env
