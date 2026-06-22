@@ -188,3 +188,6 @@ Definidas en `excel.config.js`:
 ---
 
 *Documento alineado con el código del repositorio. Si cambian nombres de colección, campos o variables de entorno, actualizar este archivo en el mismo cambio.*
+
+
+ node .\src\importarExcelAMongo.js .\data\mv3.xlsx --convocatoria=69dd44666c47cac9b824ed68

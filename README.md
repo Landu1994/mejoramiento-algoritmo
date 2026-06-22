@@ -540,3 +540,6 @@ Para problemas o preguntas:
 ISC
 
  node .\src\importarExcelAMongo.js ".\data\matriz-corte-abril.xlsx" --schema=antioquia-municipios-v1 --nombre="VIVA MI CASA Mejoradas para ellas"
+
+
+  node .\src\importarExcelAMongo.js .\data\mv3.xlsx --convocatoria=69dd44666c47cac9b824ed68
