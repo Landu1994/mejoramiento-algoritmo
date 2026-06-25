@@ -60,8 +60,14 @@ class ExcelProcessor {
       // Procesar cada hoja
       for (let i = 0; i < workbook.SheetNames.length; i++) {
         const sheetName = workbook.SheetNames[i];
+        const sheet = workbook.Sheets[sheetName];
+        const rawData = XLSX.utils.sheet_to_json(sheet, {
+          header: 1,
+          defval: null,
+          blankrows: false
+        });
 
-        if (this.validator.shouldIgnoreSheet(sheetName)) {
+        if (this.validator.shouldIgnoreSheet(sheetName) && !this.validator.hasProcessableStructure(rawData, sheetName)) {
           this.logger.info(`Omitiendo hoja auxiliar "${sheetName}" por configuración`);
           this.stats.processedSheets++;
           this.stats.skippedSheets++;
@@ -82,7 +88,7 @@ class ExcelProcessor {
         this.logger.info(`\nProcesando hoja ${i + 1}/${this.stats.totalSheets}: "${sheetName}"`);
         
         try {
-          const result = await this.processSheet(workbook, sheetName);
+          const result = await this.processSheet(workbook, sheetName, rawData);
           sheetResults.push(result);
           
           if (result.valid) {
@@ -159,18 +165,16 @@ class ExcelProcessor {
    * @param {string} sheetName - Nombre de la hoja
    * @returns {Promise<Object>} - Resultado del procesamiento de la hoja
    */
-  async processSheet(workbook, sheetName) {
+  async processSheet(workbook, sheetName, rawData) {
     const sheet = workbook.Sheets[sheetName];
-    
-    // Convertir hoja a array de arrays
-    const rawData = XLSX.utils.sheet_to_json(sheet, { 
+    const rows = rawData || XLSX.utils.sheet_to_json(sheet, {
       header: 1,
       defval: null,
       blankrows: false
     });
 
     // RF04 - Validación de estructura por hoja
-    const validation = this.validator.validateSheet(rawData, sheetName);
+    const validation = this.validator.validateSheet(rows, sheetName);
     
     if (!validation.valid) {
       // Reportar errores pero continuar con otras hojas
@@ -185,9 +189,10 @@ class ExcelProcessor {
 
     // Obtener mapeo de columnas
     const columnMapping = this.validator.getColumnMapping(validation.headers);
+    const headerRowIndex = validation.headerRowIndex ?? this.config.HEADER_ROW;
 
     // Obtener filas de datos (después de encabezados)
-    const dataRows = rawData.slice(this.config.HEADER_ROW + 1);
+    const dataRows = rows.slice(headerRowIndex + 1);
     
     // RF05 - Conteo de filas de datos
     const totalRows = dataRows.length;
@@ -214,7 +219,7 @@ class ExcelProcessor {
         batch,
         columnMapping,
         sheetName,
-        this.config.HEADER_ROW + 1 + i
+        headerRowIndex + 1 + i
       );
 
       allDocuments.push(...batchResult.documents);
@@ -243,6 +248,7 @@ class ExcelProcessor {
     return {
       sheetName,
       valid: true,
+      headerRowIndex,
       documents: allDocuments,
       errors: allErrors,
       rowsProcessed: totalRows,

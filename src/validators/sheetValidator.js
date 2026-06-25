@@ -11,6 +11,64 @@ class SheetValidator {
     this.logger = logger;
   }
 
+  getHeaderAnalysis(headers, sheetName) {
+    const result = { valid: true, errors: [], warnings: [], recognizedColumns: 0 };
+    const expectedColumns = this.config.EXPECTED_COLUMNS || [];
+    const expectedLower = new Set(expectedColumns.map(c => c.toLowerCase()));
+
+    const resolvedCanonical = headers.map(h =>
+      resolveCanonicalHeader(h, this.config)
+    );
+    const normalizedHeaders = resolvedCanonical
+      .map(c => c?.toString().toLowerCase().trim())
+      .filter(Boolean);
+    const headerSet = new Set(normalizedHeaders);
+
+    result.recognizedColumns = normalizedHeaders.filter(col => expectedLower.has(col)).length;
+
+    const requiredExcel = this.config.VALIDATIONS?.required || [];
+    const missingRequired = requiredExcel.filter(col => !headerSet.has(col.toLowerCase()));
+
+    if (missingRequired.length > 0) {
+      result.valid = false;
+      result.errors.push({
+        type: 'MISSING_REQUIRED_COLUMNS',
+        message: `Faltan columnas obligatorias: ${missingRequired.join(', ')}`,
+        sheetName,
+        missingColumns: missingRequired
+      });
+    }
+
+    const missingExpected = expectedColumns.filter(col => !headerSet.has(col.toLowerCase()));
+
+    if (missingExpected.length > 0) {
+      result.warnings.push({
+        type: 'MISSING_EXPECTED_COLUMNS',
+        message: `Faltan columnas del formato completo (${missingExpected.length}); se omitirán en el mapeo`,
+        sheetName,
+        missingColumns: missingExpected
+      });
+    }
+
+    const extraColumns = headers.filter((header, idx) => {
+      const raw = header?.toString().trim();
+      if (!raw) return false;
+      const canon = resolvedCanonical[idx];
+      return !canon || !expectedLower.has(canon.toLowerCase());
+    });
+
+    if (extraColumns.length > 0 && !this.config.ALLOW_EXTRA_COLUMNS) {
+      result.warnings.push({
+        type: 'EXTRA_COLUMNS',
+        message: `Columnas no reconocidas (sin mapeo ni alias): ${extraColumns.join(', ')}`,
+        sheetName,
+        extraColumns
+      });
+    }
+
+    return result;
+  }
+
   normalizeSheetName(sheetName) {
     return (sheetName || '').toString().trim().toLowerCase();
   }
@@ -20,6 +78,40 @@ class SheetValidator {
     const normalizedSheetName = this.normalizeSheetName(sheetName);
 
     return ignoredSheets.some(name => this.normalizeSheetName(name) === normalizedSheetName);
+  }
+
+  findHeaderRowIndex(sheetRows, sheetName) {
+    let bestCandidate = null;
+
+    for (let index = 0; index < sheetRows.length; index++) {
+      const row = sheetRows[index];
+      if (!row || row.length === 0) continue;
+
+      const analysis = this.getHeaderAnalysis(row, sheetName);
+      if (!analysis.valid || analysis.recognizedColumns === 0) {
+        continue;
+      }
+
+      if (!bestCandidate || analysis.recognizedColumns > bestCandidate.recognizedColumns) {
+        bestCandidate = {
+          index,
+          recognizedColumns: analysis.recognizedColumns
+        };
+      }
+    }
+
+    return bestCandidate ? bestCandidate.index : this.config.HEADER_ROW;
+  }
+
+  hasProcessableStructure(sheetRows, sheetName) {
+    const headerRowIndex = this.findHeaderRowIndex(sheetRows, sheetName);
+    const headerRow = sheetRows[headerRowIndex];
+
+    if (!headerRow || headerRow.length === 0) {
+      return false;
+    }
+
+    return this.getHeaderAnalysis(headerRow, sheetName).valid;
   }
 
   /**
@@ -35,18 +127,21 @@ class SheetValidator {
       errors: [],
       warnings: [],
       headers: [],
+      headerRowIndex: this.config.HEADER_ROW,
       sheetName
     };
 
     try {
-      // Obtener la fila de encabezados según configuración (RF01)
-      const headerRow = sheet[this.config.HEADER_ROW];
+      // Obtener la fila de encabezados según configuración o detectarla dentro de la hoja
+      const headerRowIndex = this.findHeaderRowIndex(sheet, sheetName);
+      const headerRow = sheet[headerRowIndex];
+      result.headerRowIndex = headerRowIndex;
       
       if (!headerRow || headerRow.length === 0) {
         result.valid = false;
         result.errors.push({
           type: 'MISSING_HEADERS',
-          message: `No se encontraron encabezados en la fila ${this.config.HEADER_ROW}`,
+          message: `No se encontraron encabezados en la fila ${headerRowIndex}`,
           sheetName
         });
         return result;
@@ -101,60 +196,7 @@ class SheetValidator {
    * @returns {Object} - Resultado de validación
    */
   validateByColumnNames(headers, sheetName) {
-    const result = { valid: true, errors: [], warnings: [] };
-    const expectedColumns = this.config.EXPECTED_COLUMNS || [];
-    const expectedLower = new Set(expectedColumns.map(c => c.toLowerCase()));
-
-    const resolvedCanonical = headers.map(h =>
-      resolveCanonicalHeader(h, this.config)
-    );
-    const headerSet = new Set(
-      resolvedCanonical
-        .map(c => c?.toString().toLowerCase().trim())
-        .filter(Boolean)
-    );
-
-    const requiredExcel = this.config.VALIDATIONS?.required || [];
-    const missingRequired = requiredExcel.filter(col => !headerSet.has(col.toLowerCase()));
-
-    if (missingRequired.length > 0) {
-      result.valid = false;
-      result.errors.push({
-        type: 'MISSING_REQUIRED_COLUMNS',
-        message: `Faltan columnas obligatorias: ${missingRequired.join(', ')}`,
-        sheetName,
-        missingColumns: missingRequired
-      });
-    }
-
-    const missingExpected = expectedColumns.filter(col => !headerSet.has(col.toLowerCase()));
-
-    if (missingExpected.length > 0) {
-      result.warnings.push({
-        type: 'MISSING_EXPECTED_COLUMNS',
-        message: `Faltan columnas del formato completo (${missingExpected.length}); se omitirán en el mapeo`,
-        sheetName,
-        missingColumns: missingExpected
-      });
-    }
-
-    const extraColumns = headers.filter((header, idx) => {
-      const raw = header?.toString().trim();
-      if (!raw) return false;
-      const canon = resolvedCanonical[idx];
-      return !expectedLower.has(canon.toLowerCase());
-    });
-
-    if (extraColumns.length > 0 && !this.config.ALLOW_EXTRA_COLUMNS) {
-      result.warnings.push({
-        type: 'EXTRA_COLUMNS',
-        message: `Columnas no reconocidas (sin mapeo ni alias): ${extraColumns.join(', ')}`,
-        sheetName,
-        extraColumns
-      });
-    }
-
-    return result;
+    return this.getHeaderAnalysis(headers, sheetName);
   }
 
   /**

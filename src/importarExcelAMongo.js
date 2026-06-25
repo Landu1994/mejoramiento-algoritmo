@@ -188,7 +188,22 @@ function buildFamiliarFromRow(dato) {
 }
 
 function getMunicipioKey(dato) {
-  return dato?._metadata?.sourceSheet || dato?.municipio || 'SIN_MUNICIPIO';
+  return dato?.municipio || dato?._metadata?.sourceSheet || 'SIN_MUNICIPIO';
+}
+
+function getSheetReportKey(sheetDetail, documents) {
+  const municipios = new Set(
+    (documents || [])
+      .filter(dato => dato?._metadata?.sourceSheet === sheetDetail?.name)
+      .map(dato => dato?.municipio)
+      .filter(Boolean)
+  );
+
+  if (municipios.size === 1) {
+    return Array.from(municipios)[0];
+  }
+
+  return sheetDetail?.name || 'SIN_MUNICIPIO';
 }
 
 function ensureMunicipioStats(statsMap, municipio) {
@@ -372,7 +387,8 @@ async function main() {
 
     if (resultado?.report?.sheetDetails) {
       for (const sheetDetail of resultado.report.sheetDetails) {
-        const municipioStats = ensureMunicipioStats(municipiosStats, sheetDetail.name || 'SIN_MUNICIPIO');
+        const municipioReporte = getSheetReportKey(sheetDetail, resultado.documents);
+        const municipioStats = ensureMunicipioStats(municipiosStats, municipioReporte);
         municipioStats.totalFilasHoja = sheetDetail.rowsProcessed || 0;
         municipioStats.totalValidosHoja = sheetDetail.validDocuments || 0;
         municipioStats.erroresValidacionPrevia = sheetDetail.invalidDocuments || 0;
